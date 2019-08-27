@@ -28,3 +28,5 @@
 # 资源
 
 Nexys4 DDR [官网](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start)
+
+FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/details/90183507)
