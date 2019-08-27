@@ -31,3 +31,5 @@ Nexys4 DDR [官网](https://reference.digilentinc.com/reference/programmable-log
 FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/details/90183507)
 
 04016613裘文成学长的仓库 [18-19-3学期的计算机组织与结构（双语）II课程的FPGA作业](https://github.com/Quzard/COA2_FPGA)
+
+04016613裘文成学长的仓库 [东南大学信息学院大三短学期FPGA课程设计——售货机](https://github.com/Quzard/FPGA_Vending_Machine)
