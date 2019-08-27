@@ -1,6 +1,5 @@
 # FPGA_UNDERWAY_SALES_MACHINE
-这是东南大学信息科学与工程学院大三短学期的FPGA开发，我们要做一个地铁售票机
-
+这是东南大学信息科学与工程学院大三短学期的FPGA开发，我们要做一个地铁售票机   --  乔竞 04017437
 # 要求
 
 # 教程
@@ -30,3 +29,5 @@
 Nexys4 DDR [官网](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start)
 
 FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/details/90183507)
+
+04016613裘文成学长的仓库 [18-19-3学期的计算机组织与结构（双语）II课程的FPGA作业](https://github.com/Quzard/COA2_FPGA)
