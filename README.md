@@ -8,6 +8,18 @@
 教程1 [点亮两个发光二极管](http://www.digilent.com.cn/community/174.html)
 
 教程2 [vivado 烧写bin格式文件到 flash 中](http://bbs.elecfans.com/jishu_1566385_1_1.html) 
+
 选择的 flash 是 
+
 **s25fl128sxxxxxx0-spi-x1_x2_x4**
 
+# 问题
+
+1. 如何写约束文件
+  1. 语法规则
+  2. vivado GUI
+2. 如何写testbench
+3. 如何深入了解VHDL
+4. 如何写VGA的VHDL代码
+5. 写项目书
+6. 找到大量的教程和案例
