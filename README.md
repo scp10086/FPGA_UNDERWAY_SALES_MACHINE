@@ -4,3 +4,5 @@
 # 要求
 
 # 教程
+
+教程1 点亮两个发光二极管 http://www.digilent.com.cn/community/174.html
