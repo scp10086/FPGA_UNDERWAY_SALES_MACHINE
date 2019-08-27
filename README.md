@@ -16,8 +16,8 @@
 # 问题
 
 1. 如何写约束文件
-  1. 语法规则
-  2. vivado GUI
+   1. 语法规则
+   2. vivado GUI
 2. 如何写testbench
 3. 如何深入了解VHDL
 4. 如何写VGA的VHDL代码
