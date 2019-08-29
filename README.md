@@ -27,7 +27,8 @@
 5. 写项目书
 6. 找到大量的教程和案例
     1. 想办法找到NEXYS4 DDR 板子一开始的那个例程
-
+7. IP核
+8. 时钟树
 # 资源
 
 Nexys4 DDR [官网](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start)
