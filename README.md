@@ -4,6 +4,8 @@
 --  乔竞 04017437 王宸 04017404
 # 要求
 
+项目同时使用 Verilog 和 VHDL 两种语言，其中一部分模块用 Verilog 写， 另一些用 VHDL 写，然后学会用 VHDL 调用 Verilog， Verilog 调用 VHDL。
+
 # 教程
 
 创建工程 选择 Family : Artix-7  Package : csg324 Speed : -1 然后选择有100t的那个
