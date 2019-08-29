@@ -8,11 +8,11 @@
 
 ![Verilog 和 VHDL 我全都要](https://github.com/scp10086/FPGA_UNDERWAY_SALES_MACHINE/blob/master/PICTURE/timg.gif)
 
-# 站在巨人的肩膀上
+### 站在巨人的肩膀上
 
 对学长的代码进行封装和调用，在此基础上写一个自己的IP核
 
-## 教程
+# 教程
 
 创建工程 选择 Family : Artix-7  Package : csg324 Speed : -1 然后选择有100t的那个
 
