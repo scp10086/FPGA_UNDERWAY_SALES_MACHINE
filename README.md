@@ -6,7 +6,7 @@
 
 项目同时使用 Verilog 和 VHDL 两种语言，其中一部分模块用 Verilog 写， 另一些用 VHDL 写，然后学会用 VHDL 调用 Verilog， Verilog 调用 VHDL。
 
-![图片](https://github.com/scp10086/FPGA_UNDERWAY_SALES_MACHINE/blob/master/timg.jpg)
+![Verilog 和 VHDL 我全都要](https://github.com/scp10086/FPGA_UNDERWAY_SALES_MACHINE/blob/master/timg.jpg)
 
 # 教程
 
