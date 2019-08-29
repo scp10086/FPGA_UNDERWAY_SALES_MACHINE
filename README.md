@@ -6,6 +6,8 @@
 
 # 教程
 
+创建工程 选择 Family : Artix-7  Package : csg324 Speed : -1 然后选择有100t的那个
+
 教程1 [点亮两个发光二极管](http://www.digilent.com.cn/community/174.html)
 
 教程2 [vivado 烧写bin格式文件到 flash 中](http://bbs.elecfans.com/jishu_1566385_1_1.html) 
