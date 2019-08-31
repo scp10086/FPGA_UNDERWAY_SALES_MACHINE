@@ -43,6 +43,8 @@
 
 Nexys4 DDR [官网](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start)
 
+[如何使用官网上的教程](https://reference.digilentinc.com/learn/programmable-logic/tutorials/github-demos/start)
+
 FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/details/90183507)
 
 04016613裘文成学长的仓库 [18-19-3学期的计算机组织与结构（双语）II课程的FPGA作业](https://github.com/Quzard/COA2_FPGA)
