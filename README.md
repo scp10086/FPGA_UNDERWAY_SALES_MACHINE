@@ -26,6 +26,10 @@
 
 教程3 [关于vivado的约束文件怎么写](https://wenku.baidu.com/view/2ec43571844769eae009ed91.html)
 
+教程4 [VHDL顶层调用Verilog模块](https://blog.csdn.net/gududeyhc/article/details/8795193)
+
+教程5 [在verilog中调用VHDL模块](https://www.cnblogs.com/chengqi521/p/6514627.html)
+
 # 问题
 
 1. 如何深入了解VHDL
