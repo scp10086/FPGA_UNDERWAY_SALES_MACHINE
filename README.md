@@ -30,6 +30,8 @@
 
 教程5 [在verilog中调用VHDL模块](https://www.cnblogs.com/chengqi521/p/6514627.html)
 
+教程6 [简单的状态机](https://wenku.baidu.com/view/28fd4333a32d7375a41780e7.html)
+
 # 问题
 
 1. 如何深入了解VHDL
