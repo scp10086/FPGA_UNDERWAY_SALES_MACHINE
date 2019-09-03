@@ -58,7 +58,6 @@ type state_type is(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10);  --¹²Ê®ÖÖ×´Ì¬£¬µÈ´ý£¬Ñ¡µ±Ç°Õ
 signal presentstate:state_type;
 signal nextstate:state_type;
 begin
-
 switch_to_next_state:process(clk)  --µÚÒ»¸öprocess
 begin
 if (clk'event and clk='1') then
@@ -67,6 +66,7 @@ end if;
 end process switch_to_next_state;
 
 change_state_mode:process(confirm,back,up,down,presentstate)  --µÚ¶þ¸öprocess
+variable var_temp:std_logic;
 begin
 case presentstate is
   when s1=>
@@ -74,19 +74,41 @@ case presentstate is
     nextstate<=s2;
     end if;
   when s2=>
-    if (confirm='1') then
-    nextstate<=s3;
-    else if (back='1') then
-    nextstate<=s1;
+    if (confirm='1') then nextstate<=s3;
+    else if (back='1') then nextstate<=s1;
     end if;
   when s3=>
     if (up='1') then nextstate<=s4;
     else if (down='1') then nextstate<=s5;
     else if (back='1') then nextstate<=s2;
     end if;
+    var_temp:='1';
   when s4=>
     if (confirm='1') then nextstate<=s5;
     else if (back='1') then nextstate<=s3;
     end if;
-  
+    var_temp:='0';
+  when s5=>
+    if (confirm='1') then nextstate<=s6;
+    else if (back='1') then
+      if (var_temp='1') then nextstate<=s3;
+      else if (var_temp='0') then nextstate<=s4;
+      end if;
+    end if;
+  when s6=>
+    if (confirm='1') then nextstate<=s7;
+    else if (back='1') then nextstate<=s5;
+    end if;
+  when s7=>
+    if (confirm='1') then nextstate<=s8;
+    else if (back='1') then nextstate<=s6;
+    end if;
+  when s8=>
+    if (back='1') then nextstate<=s10;
+    else if (back='1') then nextstate<=s7;
+    end if; 
+  when others=>
+    nextstate<=s1;
+end case;
+end process change_state_mode;
 end Behavioral;
