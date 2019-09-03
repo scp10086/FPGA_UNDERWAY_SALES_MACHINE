@@ -107,7 +107,7 @@ case presentstate is
     if (back='1') then nextstate<=s10;
     else if (back='1') then nextstate<=s7;
     end if; 
-  when others=>
+  when others=>   --³õÊ¼×´Ì¬ÊÇs1
     nextstate<=s1;
 end case;
 end process change_state_mode;
