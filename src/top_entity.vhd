@@ -74,31 +74,28 @@ case presentstate is
     else if (back='1') then nextstate<=s1;
     end if;
   when s3=>  --选当前站站点状态
-    if (up='1') then nextstate<=s4;
-    else if (down='1') then nextstate<=s5;
-    else if (back='1') then nextstate<=s2;
+    if (up='1') then nextstate<=s4;end if;
+    if (down='1') then nextstate<=s5;end if;
+    if (back='1') then nextstate<=s2;
     end if;
     var_temp:='1';
   when s4=>  --选票价状态
-    if (confirm='1') then nextstate<=s5;
-    else if (back='1') then nextstate<=s3;
-    end if;
+    if (confirm='1') then nextstate<=s5;end if;
+    if (back='1') then nextstate<=s3;end if;
     var_temp:='0';
   when s5=>  --选目的站线路状态
-    if (confirm='1') then nextstate<=s6;
-    else if (back='1') then
+    if (confirm='1') then nextstate<=s6;end if;
+    if (back='1') then
       if (var_temp='1') then nextstate<=s3;
       else if (var_temp='0') then nextstate<=s4;
       end if;
     end if;
   when s6=>  --选目的站站点状态
-    if (confirm='1') then nextstate<=s7;
-    else if (back='1') then nextstate<=s5;
-    end if;
+    if (confirm='1') then nextstate<=s7;end if;
+    if (back='1') then nextstate<=s5;end if;
   when s7=>  --选票数状态
-    if (confirm='1') then nextstate<=s8;
-    else if (back='1') then nextstate<=s6;
-    end if;
+    if (confirm='1') then nextstate<=s8;end if;
+    if (back='1') then nextstate<=s6;end if;
   when s8=>  --投币状态
     if (back='1') then nextstate<=s10;  --还没写如果钱够了下一个状态是s9（找零出票状态）的情况
     end if; 
