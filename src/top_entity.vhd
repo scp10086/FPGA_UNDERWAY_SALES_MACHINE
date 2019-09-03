@@ -21,6 +21,8 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.All;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -38,14 +40,8 @@ entity top_entity is
             back:IN std_logic;     --按钮“返回”
             up:IN std_logic;       --按钮“加一”
             down:IN std_logic;     --按钮“减一”
-            led1:OUT std_logic;    --四个LED灯，表示1元、5元、10元、20元
-            led2:OUT std_logic;
-            led3:OUT std_logic;
-            led4:OUT std_logic;
-            switch1:IN std_logic;  --四个开关，投入1元、5元、10元、20元
-            switch2:IN std_logic;
-            switch3:IN std_logic;
-            switch4:IN std_logic;
+            led:OUT std_logic_vector(3 downto 0);    --四个LED灯，表示1元、5元、10元、20元
+            switch:IN std_logic_vector(3 downto 0);  --四个开关，投入1元、5元、10元、20元
             num1:OUT std_logic_vector(3 downto 0);  --第一个数码管模块的第几位数
             num2:OUT std_logic_vector(3 downto 0);  --第二个数码管模块的第几位数
             dig1:OUT std_logic_vector(7 downto 0);  --第一个数码管模块的具体数字
@@ -106,6 +102,10 @@ case presentstate is
   when s8=>  --投币状态
     if (back='1') then nextstate<=s10;  --还没写如果钱够了下一个状态是s9（找零出票状态）的情况
     end if; 
+    if (switch="0001") then led<="0001";end if;
+    if (switch="0010") then led<="0010";end if;
+    if (switch="0100") then led<="0100";end if;
+    if (switch="1000") then led<="1000";end if;
   when others=>   --初始状态是s1
     nextstate<=s1;
 end case; --case里还少了s9到s10（退币成功状态）和s10到s1的情况
