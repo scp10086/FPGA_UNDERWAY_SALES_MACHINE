@@ -70,9 +70,8 @@ case presentstate is
     nextstate<=s2;
     end if;
   when s2=>  --选当前站线路状态
-    if (confirm='1') then nextstate<=s3;
-    else if (back='1') then nextstate<=s1;
-    end if;
+    if (confirm='1') then nextstate<=s3;end if;
+    if (back='1') then nextstate<=s1;end if;
   when s3=>  --选当前站站点状态
     if (up='1') then nextstate<=s4;end if;
     if (down='1') then nextstate<=s5;end if;
@@ -88,6 +87,7 @@ case presentstate is
     if (back='1') then
       if (var_temp='1') then nextstate<=s3;
       else if (var_temp='0') then nextstate<=s4;
+      end if;
       end if;
     end if;
   when s6=>  --选目的站站点状态
