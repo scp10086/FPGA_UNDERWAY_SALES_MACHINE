@@ -35,6 +35,7 @@ use IEEE.STD_LOGIC_UNSIGNED.All;
 
 entity top_entity is
       Port (clk:IN std_logic;      --时钟信号
+            flag1:buffer std_logic;
             datain:IN std_logic;
             confirm:IN std_logic;  --按钮“确定”
             back:IN std_logic;     --按钮“返回”
@@ -62,7 +63,6 @@ end if;
 end process switch_to_next_state;
 
 change_state_mode:process(confirm,back,up,down,presentstate)  --第二个process
-variable var_temp:std_logic;
 begin
 case presentstate is
   when s1=>  --s1等待状态
@@ -77,16 +77,16 @@ case presentstate is
     if (down='1') then nextstate<=s5;end if;
     if (back='1') then nextstate<=s2;
     end if;
-    var_temp:='1';
+    flag1<='1';
   when s4=>  --选票价状态
     if (confirm='1') then nextstate<=s5;end if;
     if (back='1') then nextstate<=s3;end if;
-    var_temp:='0';
+    flag1<='0';
   when s5=>  --选目的站线路状态
     if (confirm='1') then nextstate<=s6;end if;
     if (back='1') then
-      if (var_temp='1') then nextstate<=s3;
-      else if (var_temp='0') then nextstate<=s4;
+      if (flag1='1') then nextstate<=s3;
+      else if (flag1='0') then nextstate<=s4;
       end if;
       end if;
     end if;
@@ -107,4 +107,6 @@ case presentstate is
     nextstate<=s1;
 end case; --case里还少了s9到s10（退币成功状态）和s10到s1的情况
 end process change_state_mode;
+
+
 end Behavioral;
