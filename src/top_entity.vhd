@@ -104,11 +104,10 @@ case presentstate is
     else if (back='1') then nextstate<=s6;
     end if;
   when s8=>
-    if (back='1') then nextstate<=s10;
-    else if (back='1') then nextstate<=s7;
+    if (back='1') then nextstate<=s10;  --还没写如果钱够了下一个状态是s9的情况
     end if; 
   when others=>   --初始状态是s1
     nextstate<=s1;
-end case;
+end case; --case里还少了s9到s10和s10到s1的情况
 end process change_state_mode;
 end Behavioral;
