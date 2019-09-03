@@ -54,7 +54,7 @@ entity top_entity is
 end top_entity;
 
 architecture Behavioral of top_entity is
-type state_type is(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10);  --共十种状态，等待，选当前站线路，选当前站站点，选票价，选目的站线路，选目的站站点，选票数，投币状态，找零成功，退币成功
+type state_type is(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10);  --共十种状态，等待，选当前站线路，选当前站站点，选票价，选目的站线路，选目的站站点，选票数，投币状态，找零出票状态，退币成功
 signal presentstate:state_type;
 signal nextstate:state_type;
 begin
@@ -69,45 +69,45 @@ change_state_mode:process(confirm,back,up,down,presentstate)  --第二个process
 variable var_temp:std_logic;
 begin
 case presentstate is
-  when s1=>
+  when s1=>  --s1等待状态
     if (confirm='1' or back='1' or up='1' or down='1') then
     nextstate<=s2;
     end if;
-  when s2=>
+  when s2=>  --选当前站线路状态
     if (confirm='1') then nextstate<=s3;
     else if (back='1') then nextstate<=s1;
     end if;
-  when s3=>
+  when s3=>  --选当前站站点状态
     if (up='1') then nextstate<=s4;
     else if (down='1') then nextstate<=s5;
     else if (back='1') then nextstate<=s2;
     end if;
     var_temp:='1';
-  when s4=>
+  when s4=>  --选票价状态
     if (confirm='1') then nextstate<=s5;
     else if (back='1') then nextstate<=s3;
     end if;
     var_temp:='0';
-  when s5=>
+  when s5=>  --选目的站线路状态
     if (confirm='1') then nextstate<=s6;
     else if (back='1') then
       if (var_temp='1') then nextstate<=s3;
       else if (var_temp='0') then nextstate<=s4;
       end if;
     end if;
-  when s6=>
+  when s6=>  --选目的站站点状态
     if (confirm='1') then nextstate<=s7;
     else if (back='1') then nextstate<=s5;
     end if;
-  when s7=>
+  when s7=>  --选票数状态
     if (confirm='1') then nextstate<=s8;
     else if (back='1') then nextstate<=s6;
     end if;
-  when s8=>
-    if (back='1') then nextstate<=s10;  --还没写如果钱够了下一个状态是s9的情况
+  when s8=>  --投币状态
+    if (back='1') then nextstate<=s10;  --还没写如果钱够了下一个状态是s9（找零出票状态）的情况
     end if; 
   when others=>   --初始状态是s1
     nextstate<=s1;
-end case; --case里还少了s9到s10和s10到s1的情况
+end case; --case里还少了s9到s10（退币成功状态）和s10到s1的情况
 end process change_state_mode;
 end Behavioral;
