@@ -32,7 +32,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity choose_starting_point is
---  Port ( );
+--Port ( );
 end choose_starting_point;
 
 architecture Behavioral of choose_starting_point is
