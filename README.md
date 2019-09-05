@@ -60,3 +60,7 @@ FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/d
 04016613裘文成学长的仓库 [东南大学信息学院大三短学期FPGA课程设计——售货机](https://github.com/Quzard/FPGA_Vending_Machine)
 
 不知道是哪位学长写好的 [地铁售票系统计划书](https://max.book118.com/html/2017/0705/120448514.shtm)
+
+# 各种报错的解决方法
+
+1. [no constraints for the design](https://forums.xilinx.com/t5/Implementation/Vivado-warning-Constraints-18-5210-No-constraints-selected-for/td-p/930337)
