@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity choose_starting_point is
-  Port (clk1,up1,down1,confirm1,back:in std_logic;
+  Port (clk1,up1,down1,confirm1:in std_logic;
         starting_point:out std_logic_vector(4 downto 0));
 end choose_starting_point;
 
