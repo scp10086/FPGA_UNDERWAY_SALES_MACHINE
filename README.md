@@ -64,3 +64,5 @@ FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/d
 # 各种报错的解决方法
 
 1. [no constraints for the design](https://forums.xilinx.com/t5/Implementation/Vivado-warning-Constraints-18-5210-No-constraints-selected-for/td-p/930337)
+
+2. [verilog 将output变成reg的警告消除](https://electronics.stackexchange.com/questions/208984/verilog-how-to-avoid-redeclaration-of-ansi-port)
