@@ -70,3 +70,7 @@ FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/d
 2. [verilog 将output变成reg的警告消除](https://electronics.stackexchange.com/questions/208984/verilog-how-to-avoid-redeclaration-of-ansi-port)
 
 3. [multi driven net](https://forums.xilinx.com/t5/Welcome-Join/Error-Multi-driver-net-found-in-the-design/td-p/550090)
+
+# 重点难题的解决方案（王宸TQL）
+
+我们将找到的南京地铁票价的excel表格导出成txt，然后用VHDL读取txt里的数据。并且将txt分成四分，例如从一号线的站点作为起始站到达其它站点，从二号线的站点作为起始站到达其它站点，等等。分成四份是为了将
