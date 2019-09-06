@@ -34,6 +34,8 @@
 
 教程7 [调用模块](https://blog.csdn.net/qq_38628290/article/details/83788000)
 
+教程8 [VHDL读写txt文件](http://bbs.eeworld.com.cn/thread-365624-1-1.html)
+
 # 问题
 
 1. 如何深入了解VHDL
