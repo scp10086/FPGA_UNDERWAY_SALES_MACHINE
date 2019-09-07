@@ -34,6 +34,8 @@
 
 教程7 [调用模块](https://blog.csdn.net/qq_38628290/article/details/83788000)
 
+教程8 [VHDL读写txt文件](http://bbs.eeworld.com.cn/thread-365624-1-1.html)
+
 # 问题
 
 1. 如何深入了解VHDL
@@ -60,3 +62,15 @@ FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/d
 04016613裘文成学长的仓库 [东南大学信息学院大三短学期FPGA课程设计——售货机](https://github.com/Quzard/FPGA_Vending_Machine)
 
 不知道是哪位学长写好的 [地铁售票系统计划书](https://max.book118.com/html/2017/0705/120448514.shtm)
+
+# 各种报错的解决方法
+
+1. [no constraints for the design](https://forums.xilinx.com/t5/Implementation/Vivado-warning-Constraints-18-5210-No-constraints-selected-for/td-p/930337)
+
+2. [verilog 将output变成reg的警告消除](https://electronics.stackexchange.com/questions/208984/verilog-how-to-avoid-redeclaration-of-ansi-port)
+
+3. [multi driven net](https://forums.xilinx.com/t5/Welcome-Join/Error-Multi-driver-net-found-in-the-design/td-p/550090)
+
+# 重点难题的解决方案（王宸TQL）
+
+我们将找到的南京地铁票价的excel表格导出成txt，然后用VHDL读取txt里的数据。并且将txt分成四分，例如从一号线的站点作为起始站到达其它站点，从二号线的站点作为起始站到达其它站点，等等。分成四份是为了方便读取。
