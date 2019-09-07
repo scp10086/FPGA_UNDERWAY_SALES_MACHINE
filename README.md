@@ -65,6 +65,10 @@ FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/d
 
 VHDL 的textio package [VHDL各种包](https://www.csee.umbc.edu/portal/help/VHDL/stdpkg.html)
 
+library STD;
+
+use STD.textio.all;
+
 # 各种报错的解决方法
 
 1. [no constraints for the design](https://forums.xilinx.com/t5/Implementation/Vivado-warning-Constraints-18-5210-No-constraints-selected-for/td-p/930337)
