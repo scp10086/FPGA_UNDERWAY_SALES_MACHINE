@@ -36,6 +36,10 @@
 
 教程8 [VHDL读写txt文件](http://bbs.eeworld.com.cn/thread-365624-1-1.html)
 
+教程9  [VHDL例化](https://wenku.baidu.com/view/896a26a00029bd64783e2cbf.html)
+
+教程10 [Verilog例化](https://blog.csdn.net/ffdia/article/details/84579670)
+
 # 问题
 
 1. 如何深入了解VHDL
