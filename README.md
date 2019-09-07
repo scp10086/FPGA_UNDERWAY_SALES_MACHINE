@@ -36,6 +36,10 @@
 
 教程8 [VHDL读写txt文件](http://bbs.eeworld.com.cn/thread-365624-1-1.html)
 
+教程9  [VHDL例化](https://wenku.baidu.com/view/896a26a00029bd64783e2cbf.html)
+
+教程10 [Verilog例化](https://blog.csdn.net/ffdia/article/details/84579670)
+
 # 问题
 
 1. 如何深入了解VHDL
@@ -63,6 +67,12 @@ FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/d
 
 不知道是哪位学长写好的 [地铁售票系统计划书](https://max.book118.com/html/2017/0705/120448514.shtm)
 
+VHDL 的textio package [VHDL各种包](https://www.csee.umbc.edu/portal/help/VHDL/stdpkg.html)
+
+library STD;
+
+use STD.textio.all;
+
 # 各种报错的解决方法
 
 1. [no constraints for the design](https://forums.xilinx.com/t5/Implementation/Vivado-warning-Constraints-18-5210-No-constraints-selected-for/td-p/930337)
@@ -78,3 +88,4 @@ FPGA入门与提高 [CSDN网页](https://blog.csdn.net/Pieces_thinking/article/d
 # 我们做了什么
 
 1. 写了一个7段显示数码管的IP核
+
