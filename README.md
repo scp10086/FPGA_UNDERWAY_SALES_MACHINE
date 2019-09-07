@@ -40,6 +40,9 @@
 
 教程10 [Verilog例化](https://blog.csdn.net/ffdia/article/details/84579670)
 
+教程11 [按键消抖](https://www.jianshu.com/p/565896d5dcbb)
+                (https://wenku.baidu.com/view/bf75aa87b9d528ea81c77944.html)
+
 # 问题
 
 1. 如何深入了解VHDL
@@ -83,7 +86,11 @@ use STD.textio.all;
 
 # 重点难题的解决方案（王宸TQL）
 
-我们将找到的南京地铁票价的excel表格导出成txt，然后用VHDL读取txt里的数据。并且将txt分成四分，例如从一号线的站点作为起始站到达其它站点，从二号线的站点作为起始站到达其它站点，等等。分成四份是为了方便读取。
+原始方案一（难度较大） 我们将找到的南京地铁票价的excel表格导出到SD卡里，然后用VHDL读取SD卡的数据。
+
+改进方案二（有一定难度）用显示照片的思想，将excel中的数据写到.coe文件里。
+
+
 
 # 我们做了什么
 
