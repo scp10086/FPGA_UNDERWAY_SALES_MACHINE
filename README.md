@@ -40,7 +40,8 @@
 
 教程10 [Verilog例化](https://blog.csdn.net/ffdia/article/details/84579670)
 
-教程11 [按键消抖](https://www.jianshu.com/p/565896d5dcbb)&(https://wenku.baidu.com/view/bf75aa87b9d528ea81c77944.html)
+教程11 [按键消抖](https://www.jianshu.com/p/565896d5dcbb)
+                (https://wenku.baidu.com/view/bf75aa87b9d528ea81c77944.html)
 
 # 问题
 
