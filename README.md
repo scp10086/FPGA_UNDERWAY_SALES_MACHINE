@@ -8,6 +8,12 @@
 
 ![Verilog 和 VHDL 我全都要](https://github.com/scp10086/FPGA_UNDERWAY_SALES_MACHINE/blob/master/PICTURE/timg.gif)
 
+使用python写txt,excel到coe文件的转换脚本，完成一个简单的ROM
+
+使用C语言写一个IP核帮助查找ROM
+
+(特别感谢LABVIEW俱乐部技术总监陈欣玥06A17310的指导)
+
 ### 站在巨人的肩膀上
 
 对学长的代码进行封装和调用，在此基础上写一个自己的IP核
@@ -47,15 +53,10 @@
 
 1. 如何深入了解VHDL
 2. 如何写testbench
-3. 如何写约束文件
    1. 语法规则
    2. vivado GUI
-4. 如何写VGA的VHDL代码
 5. 写项目书
-6. 找到大量的教程和案例
-    1. 想办法找到NEXYS4 DDR 板子一开始的那个例程
-7. IP核
-8. 时钟树
+
 # 资源
 
 Nexys4 DDR [官网](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start)
