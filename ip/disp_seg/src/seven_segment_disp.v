@@ -22,21 +22,17 @@
 
 module seven_segment_disp(
     input clk,
-//    input [31:0]dispdata,
-//    input [7:0] seg_able, 
+    input [31:0]dispdata,
+    input [7:0] seg_able, 
     output reg [7:0]segg,
-    output reg [7:0]an,
-    output led
+    output reg [7:0]an
     );
 reg [31:0] divclk_cnt = 0;
 reg divclk = 0;
 reg [2:0] loop_bit = 3'b000;
-reg flag = 0;
 reg [3:0] loop_data ;
-reg [31:0]dispdata = 32'h23567819 ;
-reg [7:0]seg_able = 8'hff;
+
 parameter maxcnt = 25000;
-assign led = divclk;
 always@(posedge clk)
 begin
 if(divclk_cnt == maxcnt)

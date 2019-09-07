@@ -36,7 +36,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>b0162de7</spirit:value>
+            <spirit:value>c7e972a7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -52,7 +52,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>1439f84e</spirit:value>
+            <spirit:value>c7e972a7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -79,6 +79,40 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>dispdata</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>seg_able</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">7</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -119,19 +153,6 @@
           </spirit:wireTypeDefs>
         </spirit:wire>
       </spirit:port>
-      <spirit:port>
-        <spirit:name>led</spirit:name>
-        <spirit:wire>
-          <spirit:direction>out</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
     </spirit:ports>
     <spirit:modelParameters>
       <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
@@ -145,14 +166,9 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>src/seg_7_disp.xdc</spirit:name>
-        <spirit:userFileType>xdc</spirit:userFileType>
-        <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>src/seven_segment_disp.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_1439f84e</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_c7e972a7</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -218,23 +234,20 @@
       <xilinx:displayName>seven_segment_disp_v1_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:coreRevision>2</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2019-09-07T01:33:53Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2019-09-07T02:13:00Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5cf065c8_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@34dff78a_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b22db5f_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d999a3e_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@44fdd78c_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e9eefca_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3549820d_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@28a1cda5_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3fa3eae1_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip/disp_seg</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3267ec91_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip/disp_seg</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53a52c7_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip/disp_seg</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3aa74b6c_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip/disp_seg</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@636641ba_ARCHIVE_LOCATION">d:/FPGArepro/FPGA_UNDERWAY_SALES_MACHINE/ip/disp_seg</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="a88d4390"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="a55f1749"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="385950b5"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="7352a062"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="feb996ac"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="83495f5b"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="c0fb6656"/>
     </xilinx:packagingInfo>
