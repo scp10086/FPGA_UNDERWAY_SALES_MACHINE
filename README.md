@@ -49,6 +49,7 @@
 教程11 [按键消抖](https://www.jianshu.com/p/565896d5dcbb)
                 (https://wenku.baidu.com/view/bf75aa87b9d528ea81c77944.html)
 
+教程12 [VGA显示静态图片](https://www.cnblogs.com/ninghechuan/p/7260383.html)
 # 问题
 
 1. 如何深入了解VHDL
