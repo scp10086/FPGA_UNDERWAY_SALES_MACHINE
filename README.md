@@ -8,7 +8,7 @@
 
 ![Verilog 和 VHDL 我全都要](https://github.com/scp10086/FPGA_UNDERWAY_SALES_MACHINE/blob/master/PICTURE/timg.gif)
 
-使用python写txt,excel到coe文件的转换脚本，完成一个简单的ROM
+使用python写csv到coe文件的转换脚本(先用excel转换成csv)，完成一个简单的ROM
 
 使用C语言写一个IP核帮助查找ROM
 
@@ -52,6 +52,8 @@
                 (https://wenku.baidu.com/view/bf75aa87b9d528ea81c77944.html)
 
 教程12 [VGA显示静态图片](https://www.cnblogs.com/ninghechuan/p/7260383.html)
+
+教程13 [python读取csv](https://blog.csdn.net/u011089523/article/details/52859371)
 # 问题
 
 1. 如何深入了解VHDL
