@@ -54,6 +54,10 @@
 教程12 [VGA显示静态图片](https://www.cnblogs.com/ninghechuan/p/7260383.html)
 
 教程13 [python读取csv](https://blog.csdn.net/u011089523/article/details/52859371)
+
+教程14 [python改变图片大小](https://blog.csdn.net/weixin_43249191/article/details/84073296)
+
+教程15 [python操作图片像素](https://www.cnblogs.com/brillant-ordinary/p/9558089.html)
 # 问题
 
 1. 如何深入了解VHDL
