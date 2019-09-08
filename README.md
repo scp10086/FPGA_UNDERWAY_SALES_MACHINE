@@ -96,11 +96,7 @@ use STD.textio.all;
 
 1. 如果遇到玄学报错，记得要新建一个工程，最小化模块，开始测试
 
-2. 别在神志不清的时候写FPGA，我TM写一个testbench 竟然写了一个下午，一开始以为是我的vivado的仿真器有问题，因为我看那个TCL console 最上面一直有红
-
-色的报错，查了半天也没查出什么结果，一怒之下新建了一个工程，重新写rom的testbench结果还有那个红色报错，我内心就很不爽，随手打了 clc 和 clear ，当然这
-
-是TCL不支持的命令，我又综合了一次,结果TCL之前的clc和clear的报错一直没有消失，我才明白我运行的仿真现在根本没有报错，之后我又怀疑 
+2. 别在神志不清的时候写FPGA，我TM写一个testbench 竟然写了一个下午，一开始以为是我的vivado的仿真器有问题，因为我看那个TCL console 最上面一直有红色的报错，查了半天也没查出什么结果，一怒之下新建了一个工程，重新写rom的testbench结果还有那个红色报错，我内心就很不爽，随手打了 clc 和 clear ，当然这是TCL不支持的命令，我又综合了一次,结果TCL之前的clc和clear的报错一直没有消失，我才明白我运行的仿真现在根本没有报错，之后我又怀疑 
 
 always #10 clk=~clk
 
@@ -121,6 +117,8 @@ clk=~clk;
 end
 
 结果呢，卧槽真的成功了，哪里都没有错，我一个下午就这么过去了！哭了。
+
+![romtestbench](https://github.com/scp10086/FPGA_UNDERWAY_SALES_MACHINE/blob/master/PICTURE/rom.jpg)
 
 # 我们做了什么
 
