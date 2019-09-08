@@ -18,6 +18,7 @@ entity top_entity is
 end top_entity;
 
 architecture Behavioral of top_entity is
+
 type state_type is ( s1, --等待
                 s2, --选当前站路线
                 s3, --选当前站的站点

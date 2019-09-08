@@ -8,6 +8,12 @@
 
 ![Verilog 和 VHDL 我全都要](https://github.com/scp10086/FPGA_UNDERWAY_SALES_MACHINE/blob/master/PICTURE/timg.gif)
 
+使用python写txt,excel到coe文件的转换脚本，完成一个简单的ROM
+
+使用C语言写一个IP核帮助查找ROM
+
+(特别感谢LABVIEW俱乐部技术总监陈欣玥06A17310的指导)
+
 ### 站在巨人的肩膀上
 
 对学长的代码进行封装和调用，在此基础上写一个自己的IP核
@@ -43,19 +49,15 @@
 教程11 [按键消抖](https://www.jianshu.com/p/565896d5dcbb)
                 (https://wenku.baidu.com/view/bf75aa87b9d528ea81c77944.html)
 
+教程12 [VGA显示静态图片](https://www.cnblogs.com/ninghechuan/p/7260383.html)
 # 问题
 
 1. 如何深入了解VHDL
 2. 如何写testbench
-3. 如何写约束文件
    1. 语法规则
    2. vivado GUI
-4. 如何写VGA的VHDL代码
 5. 写项目书
-6. 找到大量的教程和案例
-    1. 想办法找到NEXYS4 DDR 板子一开始的那个例程
-7. IP核
-8. 时钟树
+
 # 资源
 
 Nexys4 DDR [官网](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start)
@@ -90,7 +92,35 @@ use STD.textio.all;
 
 改进方案二（有一定难度）用显示照片的思想，将excel中的数据写到.coe文件里。
 
+# 经验总结
 
+1. 如果遇到玄学报错，记得要新建一个工程，最小化模块，开始测试
+
+2. 别在神志不清的时候写FPGA，我TM写一个testbench 竟然写了一个下午，一开始以为是我的vivado的仿真器有问题，因为我看那个TCL console 最上面一直有红
+
+色的报错，查了半天也没查出什么结果，一怒之下新建了一个工程，重新写rom的testbench结果还有那个红色报错，我内心就很不爽，随手打了 clc 和 clear ，当然这
+
+是TCL不支持的命令，我又综合了一次,结果TCL之前的clc和clear的报错一直没有消失，我才明白我运行的仿真现在根本没有报错，之后我又怀疑 
+
+always #10 clk=~clk
+
+这句话根本没有翻转时钟，就会换成了
+
+initial
+
+begin
+
+#10;
+
+clk=~clk;
+
+#10;
+
+clk=~clk;
+
+end
+
+结果呢，卧槽真的成功了，哪里都没有错，我一个下午就这么过去了！哭了。
 
 # 我们做了什么
 
