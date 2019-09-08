@@ -33,8 +33,9 @@ use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
 --use UNISIM.VComponents.all;
 
 entity choose_starting_line is
-  Port (clk,up,down,confirm:in std_logic;
-        starting_line:out std_logic_vector(3 downto 0));
+  Port (clk,up,down,confirm:in std_logic
+        --starting_line:out std_logic_vector(3 downto 0)
+        );
 end choose_starting_line;
 
 architecture Behavioral of choose_starting_line is
@@ -49,6 +50,6 @@ if (up='1') then temp:=temp+1;end if;
 if (down='1') then temp:=temp-1;end if;
 if (confirm='1') then sig_starting_line<=temp;end if;
 end if;
-starting_line<=conv_std_logic_vector(sig_starting_line,4);--把线路的1、2、3、4转换成4位二进制数
+--starting_line<=conv_std_logic_vector(sig_starting_line,4);--把线路的1、2、3、4转换成4位二进制数
 end process choosing;
 end Behavioral;

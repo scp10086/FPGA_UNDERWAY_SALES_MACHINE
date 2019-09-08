@@ -25,8 +25,9 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity choose_end_point is
-  Port (clk2,up2,down2,confirm2:in std_logic;
-        end_point:out std_logic_vector(4 downto 0) );
+  Port (clk2,up2,down2,confirm2:in std_logic
+        --end_point:out std_logic_vector(4 downto 0) 
+        );
 end choose_end_point;
 
 architecture Behavioral of choose_end_point is
@@ -82,7 +83,7 @@ when "0001"=>
    if (up2='1') then temp1:=temp1+1;end if;
    if (down2='1') then temp1:=temp1-1;end if;
    if (confirm2='1') then sig_end_1_point<=temp1;end if;
-   end_point<=conv_std_logic_vector(sig_end_1_point,5);--把整数站点转换成5位二进制数
+   --end_point<=conv_std_logic_vector(sig_end_1_point,5);--把整数站点转换成5位二进制数
  end if;
  
  when "0010"=>
@@ -90,7 +91,7 @@ when "0001"=>
     if (up2='1') then temp2:=temp2+1;end if;
     if (down2='1') then temp2:=temp2-1;end if;
     if (confirm2='1') then sig_end_2_point<=temp2;end if;
-    end_point<=conv_std_logic_vector(sig_end_2_point,5);--把整数站点转换成5位二进制数
+    --end_point<=conv_std_logic_vector(sig_end_2_point,5);--把整数站点转换成5位二进制数
   end if;
   
   when "0011"=>
@@ -98,7 +99,7 @@ when "0001"=>
       if (up2='1') then temp3:=temp3+1;end if;
       if (down2='1') then temp3:=temp3-1;end if;
       if (confirm2='1') then sig_end_3_point<=temp3;end if;
-      end_point<=conv_std_logic_vector(sig_end_3_point,5);--把整数站点转换成5位二进制数
+      --end_point<=conv_std_logic_vector(sig_end_3_point,5);--把整数站点转换成5位二进制数
     end if;
     
     when "0100"=>
@@ -106,7 +107,7 @@ when "0001"=>
         if (up2='1') then temp4:=temp4+1;end if;
         if (down2='1') then temp2:=temp4-1;end if;
         if (confirm2='1') then sig_end_4_point<=temp4;end if;
-        end_point<=conv_std_logic_vector(sig_end_4_point,5);--把整数站点转换成5位二进制数
+        --end_point<=conv_std_logic_vector(sig_end_4_point,5);--把整数站点转换成5位二进制数
       end if;
       
  end case;

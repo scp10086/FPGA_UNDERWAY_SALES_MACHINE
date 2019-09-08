@@ -33,18 +33,19 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity choose_starting_point is
-  Port (clk1,up1,down1,confirm1:in std_logic;
-        starting_point:out std_logic_vector(4 downto 0));
+  Port (clk1,up1,down1,confirm1:in std_logic
+        --starting_point:out std_logic_vector(4 downto 0)
+        );
 end choose_starting_point;
 
 --地铁一号线27站，二号线26站，三号线29站，四号线18站
 architecture Behavioral of choose_starting_point is
 
 --声明选当前线路的模块，注意位置，在architecture里声明
-component choose_starting_line
-  Port (clk,up,down,confirm:in std_logic;
-        starting_line:out std_logic_vector(3 downto 0));
-end component;
+--component choose_starting_line
+  --Port (clk,up,down,confirm:in std_logic;
+        --starting_line:out std_logic_vector(3 downto 0));
+--end component;
 
 signal sig_sl:std_logic_vector(3 downto 0);
 
@@ -54,7 +55,9 @@ signal sig_starting_3_point:integer range 29 downto 1;--把信号sig_starting_3_poi
 signal sig_starting_4_point:integer range 18 downto 1;--把信号sig_starting_4_point(即1号线的站点)定义成一个1~18的整数
 
 begin
-u1:choose_starting_line port map(clk=>clk1,up=>up1,down=>down1,confirm=>confirm1,starting_line=>sig_sl);
+
+sig_sl<=sig_starting_line;
+--u1:choose_starting_line port map(clk=>clk1,up=>up1,down=>down1,confirm=>confirm1,starting_line=>sig_sl);
 choosing:process(clk1,up1,down1,confirm1)
 variable temp1:integer range 27 downto 1;
 variable temp2:integer range 26 downto 1;
@@ -73,7 +76,7 @@ when "0001"=>
    if (up1='1') then temp1:=temp1+1;end if;
    if (down1='1') then temp1:=temp1-1;end if;
    if (confirm1='1') then sig_starting_1_point<=temp1;end if;
-   starting_point<=conv_std_logic_vector(sig_starting_1_point,5);--把整数站点转换成5位二进制数
+   --starting_point<=conv_std_logic_vector(sig_starting_1_point,5);--把整数站点转换成5位二进制数
  end if;
  
  when "0010"=>
@@ -81,7 +84,7 @@ when "0001"=>
     if (up1='1') then temp2:=temp2+1;end if;
     if (down1='1') then temp2:=temp2-1;end if;
     if (confirm1='1') then sig_starting_2_point<=temp2;end if;
-    starting_point<=conv_std_logic_vector(sig_starting_2_point,5);--把整数站点转换成5位二进制数
+    --starting_point<=conv_std_logic_vector(sig_starting_2_point,5);--把整数站点转换成5位二进制数
   end if;
   
   when "0011"=>
@@ -89,7 +92,7 @@ when "0001"=>
       if (up1='1') then temp3:=temp3+1;end if;
       if (down1='1') then temp3:=temp3-1;end if;
       if (confirm1='1') then sig_starting_3_point<=temp3;end if;
-      starting_point<=conv_std_logic_vector(sig_starting_3_point,5);--把整数站点转换成5位二进制数
+      --starting_point<=conv_std_logic_vector(sig_starting_3_point,5);--把整数站点转换成5位二进制数
     end if;
     
     when "0100"=>
@@ -97,7 +100,7 @@ when "0001"=>
         if (up1='1') then temp4:=temp4+1;end if;
         if (down1='1') then temp2:=temp4-1;end if;
         if (confirm1='1') then sig_starting_4_point<=temp4;end if;
-        starting_point<=conv_std_logic_vector(sig_starting_4_point,5);--把整数站点转换成5位二进制数
+        --starting_point<=conv_std_logic_vector(sig_starting_4_point,5);--把整数站点转换成5位二进制数
       end if;
       
  end case;
