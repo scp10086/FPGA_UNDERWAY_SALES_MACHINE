@@ -120,6 +120,12 @@ end
 
 ![romtestbench](https://github.com/scp10086/FPGA_UNDERWAY_SALES_MACHINE/blob/master/PICTURE/rom.jpg)
 
+啊啊。后来我发现
+
+always #10 clk=~clk
+
+这句话因该放在endmodule之前。
+
 # 我们做了什么
 
 1. 写了一个7段显示数码管的IP核
