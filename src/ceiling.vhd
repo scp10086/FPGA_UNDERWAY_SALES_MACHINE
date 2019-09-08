@@ -46,25 +46,36 @@ end component;
 
 --模块2 选起始线路
 component choose_starting_line
-Port (clk,up,down,confirm:in std_logic);
+Port (clk,up,down,confirm:in std_logic;
+      starting_line:out integer range 4 downto 1
+      );
 end component;
 
 --模块3 选起始站点
 component choose_starting_point
-Port (clk1,up1,down1,confirm1:in std_logic);
+Port (clk1,up1,down1,confirm1:in std_logic;
+get_starting_line:in integer range 4 downto 1;
+starting_point:out integer);
 end component;
 
 --模块4 选终点线路
 component choose_end_line
-Port (clk,up,down,confirm:in std_logic);
+Port (clk,up,down,confirm:in std_logic;
+      end_line:out integer range 4 downto 1);
 end component;
 
 --模块5 选终点站点
 component choose_end_point
-Port (clk2,up2,down2,confirm2:in std_logic);
+Port (clk2,up2,down2,confirm2:in std_logic;
+      get_starting_line,get_end_line:in integer range 4 downto 1;
+      get_starting_point:in integer;
+      end_point:out integer);
 end component;
 
 signal sig_up0,sig_down0,sig_confirm0,sig_back0:std_logic;
+
+signal starting_line,end_line:integer range 4 downto 1;
+signal starting_point,end_point:integer;
 
 begin
 
@@ -86,7 +97,8 @@ port map(
   clk=>clk,
   up=>up,
   down=>down,
-  confirm=>confirm
+  confirm=>confirm,
+  starting_line=>starting_line
 );
 
 mux3:choose_starting_point
@@ -94,7 +106,9 @@ port map(
   clk1=>clk,
   up1=>up,
   down1=>down,
-  confirm1=>confirm
+  confirm1=>confirm,
+  get_starting_line=>starting_line,
+  starting_point=>starting_point
 );
 
 mux4:choose_end_line
@@ -102,7 +116,8 @@ port map(
   clk=>clk,
   up=>up,
   down=>down,
-  confirm=>confirm
+  confirm=>confirm,
+  end_line=>end_line
 );  
   
 mux5:choose_end_point
@@ -110,7 +125,11 @@ port map(
   clk2=>clk,
   up2=>up,
   down2=>down,
-  confirm2=>confirm
+  confirm2=>confirm,
+  get_starting_line=>starting_line,
+  get_starting_point=>starting_point,
+  get_end_line=>end_line,
+  end_point=>end_point
 );  
   
 end Behavioral;

@@ -33,13 +33,15 @@ use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
 --use UNISIM.VComponents.all;
 
 entity choose_starting_line is
-  Port (clk,up,down,confirm:in std_logic
-        --starting_line:out std_logic_vector(3 downto 0)
+  Port (clk,up,down,confirm:in std_logic;
+        starting_line:out integer range 4 downto 1
         );
 end choose_starting_line;
 
 architecture Behavioral of choose_starting_line is
+
 signal sig_starting_line:integer range 4 downto 1;--把信号sig_starting_line定义成一个1~4的整数
+
 begin
 choosing:process(clk,up,down,confirm)
 variable temp:integer range 4 downto 1;--把变量starting_line定义成一个1~4的整数，定义变量主要是为了在进程中实时更新线路数值
@@ -50,6 +52,8 @@ if (up='1') then temp:=temp+1;end if;
 if (down='1') then temp:=temp-1;end if;
 if (confirm='1') then sig_starting_line<=temp;end if;
 end if;
+starting_line<=sig_starting_line;
+
 --starting_line<=conv_std_logic_vector(sig_starting_line,4);--把线路的1、2、3、4转换成4位二进制数
 end process choosing;
 end Behavioral;
