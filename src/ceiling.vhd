@@ -33,7 +33,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity ceiling is
   Port (clk,up,down,confirm,back:in std_logic;
-        led:out std_logic ); --到底输出端口是什么暂时还没想清楚
+        led:OUT std_logic_vector(3 downto 0);    --四个LED灯，表示1元、5元、10元、20元
+        switch:IN std_logic_vector(3 downto 0)
+        );  --四个开关，投入1元、5元、10元、20元 ); 
 end ceiling;
 
 architecture Behavioral of ceiling is
@@ -41,7 +43,8 @@ architecture Behavioral of ceiling is
 --模块1 按键消抖
 component no_buffeting
 Port (clk,up,down,confirm,back:in std_logic; 
-        up0,down0,confirm0,back0:out std_logic);--不带0的都是原按键信号,带0的是消抖后的信号
+        up0,down0,confirm0,back0:out std_logic
+        );--不带0的都是原按键信号,带0的是消抖后的信号
 end component;
 
 --模块2 选起始线路
@@ -72,10 +75,34 @@ Port (clk2,up2,down2,confirm2:in std_logic;
       end_point:out integer);
 end component;
 
+--模块6 判断过了5秒无操作
+component five_sec_passed
+Port (clk,up,down,confirm,back:in std_logic;
+        up_to_5sec:out std_logic );
+end component;
+
+--模块7 状态机
+component top_entity
+Port(
+            clk:IN std_logic;      --时钟信号
+            confirm:IN std_logic;  --按钮"确定"
+            back:IN std_logic;     --按钮"返回"
+            up:IN std_logic;       --按钮"加一"
+            down:IN std_logic;     --按钮"减一"
+            led:OUT std_logic_vector(3 downto 0);    --四个LED灯，表示1元、5元、10元、20元
+            switch:IN std_logic_vector(3 downto 0);  --四个开关，投入1元、5元、10元、20元
+            --num:OUT std_logic_vector( 7 downto 0 );  --数码管模块的第几位数
+            --dig:OUT std_logic_vector( 7 downto 0 );  --数码管模块的具体管脚
+            get_up_to_5sec:IN std_logic     
+        );   
+end component;
+
+
 signal sig_up0,sig_down0,sig_confirm0,sig_back0:std_logic;
 
 signal starting_line,end_line:integer range 4 downto 1;
 signal starting_point,end_point:integer;
+signal up_to_5sec:std_logic;
 
 begin
 
@@ -132,4 +159,27 @@ port map(
   end_point=>end_point
 );  
   
+mux6:five_sec_passed
+port map(
+clk=>clk,
+up=>up,
+down=>down,
+confirm=>confirm,
+back=>back,
+up_to_5sec=>up_to_5sec
+);
+
+mux7:top_entity
+port map(
+clk=>clk,
+up=>up,
+down=>down,
+confirm=>confirm,
+back=>back,
+led=>led,
+switch=>switch,
+get_up_to_5sec=>up_to_5sec
+);
+
+
 end Behavioral;
