@@ -4,7 +4,7 @@ if __name__ == "__main__":
     img_path = 'underground.png'
     cover_path = 'ss.jpg'
     img = cv2.imread(img_path)
-    img = cv2.resize(img,(600,450))
+    img = cv2.resize(img,(640,480))
     cv2.imwrite(cover_path,img)
     # cv2.namedWindow('depth', cv2.WINDOW_AUTOSIZE)
     height = img.shape[0]
