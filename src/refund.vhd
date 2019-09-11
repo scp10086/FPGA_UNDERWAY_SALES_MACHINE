@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 2019/09/05 15:58:33
+-- Create Date: 2019/09/09 20:54:03
 -- Design Name: 
--- Module Name: choose_end_line - Behavioral
+-- Module Name: refund - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,20 +31,19 @@ use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity choose_end_line is
-  Port (clk,up,down,confirm:in std_logic;
-        --end_line:out std_logic_vector(3 downto 0) 
-        end_line:out std_logic_vector(1 downto 0);
+entity refund is
+  Port (clk:in std_logic;
+        get_real_pay:in integer;
         get_present_state:in std_logic_vector(3 downto 0);
-        segg :out std_logic_vector(7 downto 0);
-                an :out std_logic_vector(7 downto 0)
-        );
-end choose_end_line;
+        dispdata :in std_logic_vector(31 downto 0);
+                seg_able :in std_logic_vector(7 downto 0);
+                segg :out std_logic_vector(7 downto 0);
+                an :out std_logic_vector(7 downto 0));
+end refund;
 
-architecture Behavioral of choose_end_line is
-signal end_line32:std_logic_vector(31 downto 0);
-signal sig_end_line:integer range 3 downto 0;--把信号sig_end_line定义成一个1~4的整数
-signal confirm0,up0,down0:std_logic;
+architecture Behavioral of refund is
+signal sig_real_pay:integer;
+signal sig_refund:std_logic_vector(31 downto 0);
 
 component seven_segment_disp_0
 port
@@ -72,30 +71,16 @@ port map(
         an => an  
 );
 
-
-process(clk)
+process(clk,get_present_state)
 begin
-if (clk'event and clk='1') then
-    confirm0<=confirm;
-    up0<=up;
-    down0<=down;
+if(clk'event and clk='1') then
+if(get_present_state="1001") then
+--显示退款即可，refund就是get_real_pay
+  sig_real_pay<=get_real_pay;
+  sig_refund<=conv_std_logic_vector(sig_real_pay,32);
+  disp_data_2<=sig_refund; --显示，这里是32位2进制数
+end if;
 end if;
 end process;
-
-choosing:process(clk,up,down,confirm,get_present_state)
-variable temp:integer range 3 downto 0:=0;--把变量starting_line定义成一个1~4的整数，定义变量主要是为了在进程中实时更新线路数值
-begin
-
-if (clk'event and clk='1') then 
-if (get_present_state="0011") then
-if (up='1'and up0='0') then temp:=temp+1;end if;
-if (down='1'and down0='0') then temp:=temp-1;end if;
-if (confirm='1'and confirm0='0') then sig_end_line<=temp;end if;
-end if;
-end if;
-end_line<=conv_std_logic_vector(sig_end_line,2);--把线路的1、2、3、4转换成4位二进制数
-end_line32<=conv_std_logic_vector(sig_end_line,32);
-disp_data_2<=end_line32; --显示，这里是32位2进制数
-end process choosing;
 
 end Behavioral;

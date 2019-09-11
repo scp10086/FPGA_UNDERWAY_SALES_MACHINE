@@ -33,14 +33,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity five_sec_passed is
   Port (clk,up,down,confirm,back:in std_logic;
-        up_to_5sec:out std_logic );
+        led:out std_logic );
 end five_sec_passed;
 
 architecture Behavioral of five_sec_passed is
 
 signal clk_1s:std_logic;
 signal key:std_logic_vector(3 downto 0);
+signal up_to_5sec:std_logic;
 begin
+
+led<='0';
 
 --100M·ÖÆµ
 one_sec:process(clk)
@@ -74,4 +77,12 @@ if (key="0000") then
 end if;
 end process five_sec;
 
+process(clk)
+begin
+if (clk'event and clk='1') then
+  if (up_to_5sec='1') then led<='1';
+  else led<='0';
+  end if;
+end if;
+end process;
 end Behavioral;
