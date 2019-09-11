@@ -98,6 +98,10 @@ use STD.textio.all;
 
 3. [multi driven net](https://forums.xilinx.com/t5/Welcome-Join/Error-Multi-driver-net-found-in-the-design/td-p/550090)
 
+4. [真 multi driven net解决方案](https://forums.xilinx.com/t5/Synthesis/Synth-8-6859-multi-driven-net-on-pin-output-error/m-p/952277#M30421)
+
+5. [wire 赋初值导致multi driven net](https://www.xilinx.com/support/answers/60013.html)
+
 # 重点难题的解决方案（王宸TQL）
 
 原始方案一（难度较大） 我们将找到的南京地铁票价的excel表格导出到SD卡里，然后用VHDL读取SD卡的数据。
@@ -138,7 +142,9 @@ always #10 clk=~clk
 
 这句话因该放在endmodule之前。
 
-3. 对不起，我不知道FPGA的BRAM很小，之前想放一张800* 600的照片，结果BRAM无法生成，只好阉割了。
+3. 对不起，我不知道FPGA的BRAM很小，之前想放一张800* 600的照片，结果BRAM无法生成，只好阉割了成640 * 480的分辨率。
+
+4. 对不起，我本来想640 * 480 60fps 显示图片，这样的时钟频率为25.175Mhz ，然而时钟分频只能到25.173Mhz，这就导致图片只能显示一点点。
 
 # 我们做了什么
 
