@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 2019/09/05 15:58:33
+-- Create Date: 2019/09/09 20:59:24
 -- Design Name: 
--- Module Name: choose_end_line - Behavioral
+-- Module Name: pay - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -22,6 +22,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
+
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --use IEEE.NUMERIC_STD.ALL;
@@ -31,20 +32,21 @@ use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity choose_end_line is
-  Port (clk,up,down,confirm:in std_logic;
-        --end_line:out std_logic_vector(3 downto 0) 
-        end_line:out std_logic_vector(1 downto 0);
+entity pay is
+  Port (clk,switch0,switch1,switch2,switch3,confirm:in std_logic;
+        real_pay:out integer;
         get_present_state:in std_logic_vector(3 downto 0);
-        segg :out std_logic_vector(7 downto 0);
+        dispdata :in std_logic_vector(31 downto 0);
+                seg_able :in std_logic_vector(7 downto 0);
+                segg :out std_logic_vector(7 downto 0);
                 an :out std_logic_vector(7 downto 0)
-        );
-end choose_end_line;
+       ); 
+end pay;
 
-architecture Behavioral of choose_end_line is
-signal end_line32:std_logic_vector(31 downto 0);
-signal sig_end_line:integer range 3 downto 0;--把信号sig_end_line定义成一个1~4的整数
-signal confirm0,up0,down0:std_logic;
+architecture Behavioral of pay is
+signal sig_pay:integer;
+signal sig_pay32:std_logic_vector(31 downto 0);
+signal confirm0,switch00,switch10,switch20,switch30:std_logic;
 
 component seven_segment_disp_0
 port
@@ -72,30 +74,34 @@ port map(
         an => an  
 );
 
-
 process(clk)
 begin
 if (clk'event and clk='1') then
     confirm0<=confirm;
-    up0<=up;
-    down0<=down;
+    switch00<=switch0;
+    switch10<=switch1;
+    switch20<=switch2;
+    switch30<=switch3;
+    real_pay<=sig_pay;
 end if;
 end process;
 
-choosing:process(clk,up,down,confirm,get_present_state)
-variable temp:integer range 3 downto 0:=0;--把变量starting_line定义成一个1~4的整数，定义变量主要是为了在进程中实时更新线路数值
+process(clk,confirm,switch0,switch1,switch2,switch3,get_present_state)
+variable temp:integer:=0;
 begin
-
-if (clk'event and clk='1') then 
-if (get_present_state="0011") then
-if (up='1'and up0='0') then temp:=temp+1;end if;
-if (down='1'and down0='0') then temp:=temp-1;end if;
-if (confirm='1'and confirm0='0') then sig_end_line<=temp;end if;
+if (clk'event and clk='1') then
+if (get_present_state="0111") then
+  if (switch0='1'and switch00='0') then temp:=temp+1;end if; --拨动第一个开关上下一次算投入1元，下同
+  if (switch1='1'and switch10='0') then temp:=temp+5;end if;
+  if (switch2='1'and switch20='0') then temp:=temp+10;end if;
+  if (switch3='1'and switch30='0') then temp:=temp+20;end if;
+end if;
+if(confirm='1' and confirm0='0') then --按确认则投币完毕
+sig_pay<=temp;
+sig_pay32<=conv_std_logic_vector(sig_pay,32);
+disp_data_2<=sig_pay32; --显示，这里是32位2进制数
 end if;
 end if;
-end_line<=conv_std_logic_vector(sig_end_line,2);--把线路的1、2、3、4转换成4位二进制数
-end_line32<=conv_std_logic_vector(sig_end_line,32);
-disp_data_2<=end_line32; --显示，这里是32位2进制数
-end process choosing;
+end process;
 
 end Behavioral;
