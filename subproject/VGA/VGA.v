@@ -27,11 +27,13 @@ module VGA(
     output[3:0]vgared,
     output[3:0]vgagreen,
     output[3:0]vgablue
+
     );
-parameter ta = 96,tb = 48,tc = 640,td = 16,te = 800,to = 2,tp = 33, tq = 480,tr = 10, ts = 525;
+parameter ta = 64,tb = 120,tc = 640,td = 16,te = 840,to = 3,tp = 16, tq = 480,tr = 1, ts = 500;
 reg[10:0]x_counter = 0;
 reg[10:0]y_counter = 0;
 reg[18:0]addr = 9999;
+reg hs,vs;
 wire[11:0]colour;
 wire clk_vga;
 
@@ -44,39 +46,43 @@ dispram uut_disp(
 .clk(clk_vga),
 .ramaddrb(addr),
 .ramdoutb(colour)
-);
 
-always @(negedge clk_vga) 
-begin
-if(x_counter == te - 1)
-    begin
-    x_counter = 0;
-    if(y_counter == ts - 1)
-        y_counter = 0;
-    else
-        y_counter = y_counter + 1;
-    end
-else
-    begin
-        x_counter = x_counter + 1;
-    end
-if((y_counter >= (to+tp))&&(y_counter < to+tp+ tq))
-begin
-    if((x_counter >= ta +tb -2)&&(x_counter<(ta+tb+tc -2)))
-    begin
-    addr = addr + 1;
-    end
-end
-else
-begin
-addr = 9999;
-end
-end
+);
 assign    vgared  = colour[11:8];
 assign    vgagreen  = colour[7:4];
 assign    vgablue  = colour[3:0];
-assign hsync = ! (x_counter < ta);
-assign vsync = ! (y_counter < to);
+assign hsync = hs;
+assign vsync = vs;
+always @(posedge clk_vga)
+begin
+    if(x_counter == te-1)
+        x_counter = 0;
+    else x_counter = x_counter + 1;
+end
+always @(posedge clk_vga)
+begin
+    if((x_counter == te-1)&&(y_counter == ts-1))
+        y_counter = 0;
+    else if(x_counter == te-1) y_counter = y_counter +1;
+end
+always @(posedge clk_vga)
+begin
+    if((x_counter > (tc + td -1))&&(x_counter <= (tc + td + ta -1)))
+        hs = 0;
+    else hs =1;
+end
+always @(posedge clk_vga)
+begin
+    if((y_counter >= (tq + tr -1))&&(y_counter < (tq + tr + to -1)))
+        hs = 0;
+    else hs =1;
+end   
+
+always@(negedge clk_vga)
+    if()
+begin
+
+end 
 endmodule
 
 

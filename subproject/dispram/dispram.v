@@ -22,12 +22,7 @@
 
 module dispram(
     input clk,  //clk
-    //input wea, //write enable
-    //input[18:0]ramaddra, 
-    //input[15:0]ramdina, 
-    //input enb, 
     input[18:0]ramaddrb,
-    //output[11:0]ramdouta,
     output[11:0]ramdoutb
     );
 wire[11:0] k; 
