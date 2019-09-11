@@ -40,7 +40,7 @@ end refund;
 
 architecture Behavioral of refund is
 signal sig_real_pay:std_logic_vector(4 downto 0);
-signal sig_refund:std_logic_vector(31 downto 0);
+signal sig_refund:std_logic_vector(4 downto 0);
 
 begin
 
@@ -51,7 +51,7 @@ if(get_present_state="1001") then
 --显示退款即可，refund就是get_real_pay
   sig_real_pay<=get_real_pay;
   sig_refund<=sig_real_pay;
-  dispdata<=sig_refund; --显示，这里是32位2进制数
+  dispdata<="000000000000000000000000000"&sig_refund; --显示，这里是32位2进制数
 end if;
 end if;
 end process;

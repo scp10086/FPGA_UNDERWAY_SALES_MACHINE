@@ -29,12 +29,14 @@ module computechange(
     input[3:0]get_price,
     input[3:0]get_present_state,
     output[4:0]change,
+    output[4:0]total,
     output[31:0]dispdata
     );
 reg [4:0] total_price = 0;
 reg [31:0] rest_money = 0;
 assign  dispdata = rest_money;
 assign  change = rest_money[4:0];
+assign total = total_price;
 always @(posedge clk )
 begin
     if (get_present_state == 4'b1000)

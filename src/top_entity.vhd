@@ -20,7 +20,8 @@ entity top_entity is
             led7:OUT std_logic; 
             led8:OUT std_logic; 
             led9:OUT std_logic; 
-                        
+            get_total:IN std_logic_vector(4 downto 0);    
+            get_real_pay:IN std_logic_vector(4 downto 0);         
             --switch0:IN std_logic;  --四个开关，投入1元、5元、10元、20元
             --switch1:IN std_logic;
             --switch2:IN std_logic;
@@ -104,7 +105,7 @@ case present_state is
   when "0111"=>  --投币状态
 
     if (confirm0='0' and confirm='1') then --按下确定键
-      if (real_pay>=should_pay) then present_state<="1000";  --如果付的钱比应付的多，就跳到找零出票状态
+      if (get_real_pay>=get_total) then present_state<="1000";  --如果付的钱比应付的多，就跳到找零出票状态
       else present_state<="1001"; --钱不够跳到退币状态
       end if;
     end if;

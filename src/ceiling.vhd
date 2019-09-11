@@ -114,6 +114,8 @@ Port(
             led1:OUT std_logic; 
             led2:OUT std_logic; 
             led3:OUT std_logic; 
+            get_total:IN std_logic_vector(4 downto 0);    
+            get_real_pay:IN std_logic_vector(4 downto 0); 
             --switch0:IN std_logic;  --四个开关，投入1元、5元、10元、20元
             --switch1:IN std_logic;
             --switch2:IN std_logic;
@@ -149,7 +151,7 @@ component computechange
 Port (clk,flag0:in std_logic;
         get_amount:in std_logic_vector(1 downto 0);
         get_real_pay:in std_logic_vector(4 downto 0);
-        change:out integer;
+        change,total:out std_logic_vector(4 downto 0);
         dispdata :out std_logic_vector(31 downto 0);
         get_price,ticket_price:in std_logic_vector(3 downto 0);
         get_present_state:in std_logic_vector(3 downto 0));
@@ -201,7 +203,7 @@ signal seg_able_2 : std_logic_vector( 7 downto 0);
 signal sig_up0,sig_down0,sig_confirm0,sig_back0:std_logic;
 
 signal starting_line,end_line: std_logic_vector(1 downto 0);
-signal should_pay,change:integer;  --直接选的票价
+signal total,change:std_logic_vector(4 downto 0);  
 signal starting_point,end_point:std_logic_vector(4 downto 0);
 signal up_to_5sec,flag0:std_logic;
 signal present_state:std_logic_vector(3 downto 0);
@@ -294,6 +296,8 @@ led0=>led0,
 led1=>led1,
 led2=>led2,
 led3=>led3,
+get_total=>total,
+get_real_pay=>real_pay,
 --switch0=>switch0,
 --switch1=>switch1,
 --switch2=>switch2,
@@ -335,6 +339,7 @@ flag0=>flag0,
 ticket_price=>ticket_price,
 get_real_pay=>real_pay,
 change=>change,
+total=>total,
 get_price=>price2,  --票价表里的票价
 get_amount=>ticket_amount,
 dispdata=>disp_data_2,
