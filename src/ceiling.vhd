@@ -63,7 +63,7 @@ end component;
 component choose_starting_line
 Port (clk,up,down,confirm:in std_logic;
       get_present_state:in std_logic_vector(3 downto 0);
-      starting_line:out std_logic_vector(1 downto 0);
+      starting_line:out std_logic_vector(31 downto 0);
       dispdata :out std_logic_vector(31 downto 0)   
       );
 end component;
@@ -71,8 +71,8 @@ end component;
 --模块3 选起始站点
 component choose_starting_point
 Port (clk1,up1,down1,confirm1:in std_logic;
-get_starting_line:in std_logic_vector(1 downto 0);
-starting_point:out std_logic_vector(4 downto 0);
+get_starting_line:in std_logic_vector(31 downto 0);
+starting_point:out std_logic_vector(31 downto 0);
 get_present_state:in std_logic_vector(3 downto 0);
 dispdata :out std_logic_vector(31 downto 0));
 end component;
@@ -202,9 +202,9 @@ signal disp_data_2 : std_logic_vector(31 downto 0);
 signal seg_able_2 : std_logic_vector( 7 downto 0);
 signal sig_up0,sig_down0,sig_confirm0,sig_back0:std_logic;
 
-signal starting_line,end_line: std_logic_vector(1 downto 0);
+signal starting_line,end_line: std_logic_vector(31 downto 0);
 signal total,change:std_logic_vector(4 downto 0);  
-signal starting_point,end_point:std_logic_vector(4 downto 0);
+signal starting_point,end_point:std_logic_vector(31 downto 0);
 signal up_to_5sec,flag0:std_logic;
 signal present_state:std_logic_vector(3 downto 0);
 signal price2:std_logic_vector(3 downto 0);  --票价表里的票价

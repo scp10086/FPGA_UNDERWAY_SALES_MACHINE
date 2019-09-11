@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
 entity choose_end_line is
   Port (clk,up,down,confirm:in std_logic;
         --end_line:out std_logic_vector(3 downto 0) 
-        end_line:out std_logic_vector(1 downto 0);
+        end_line:out std_logic_vector(31 downto 0);
         get_present_state:in std_logic_vector(3 downto 0);
         dispdata :out std_logic_vector(31 downto 0)
         );
@@ -67,7 +67,7 @@ if (down='1'and down0='0') then temp:=temp-1;end if;
 if (confirm='1'and confirm0='0') then sig_end_line<=temp;end if;
 end if;
 end if;
-end_line<=conv_std_logic_vector(sig_end_line,2);--把线路的1、2、3、4转换成4位二进制数
+end_line<=conv_std_logic_vector(sig_end_line,32);--把线路的1、2、3、4转换成4位二进制数
 end_line32<=conv_std_logic_vector(sig_end_line,32);
 dispdata<=end_line32; --显示，这里是32位2进制数
 end process choosing;

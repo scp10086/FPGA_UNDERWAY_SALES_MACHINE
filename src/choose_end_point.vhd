@@ -27,9 +27,9 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity choose_end_point is
   Port (clk2,up2,down2,confirm2:in std_logic;
         led15:out std_logic;
-        get_starting_line,get_end_line:in std_logic_vector(1 downto 0);
-        get_starting_point:in std_logic_vector(4 downto 0);
-        end_point:out std_logic_vector(4 downto 0);
+        get_starting_line,get_end_line:in std_logic_vector(31 downto 0);
+        get_starting_point:in std_logic_vector(31 downto 0);
+        end_point:out std_logic_vector(31 downto 0);
         get_present_state:in std_logic_vector(3 downto 0);
         dispdata :out std_logic_vector(31 downto 0)
         );
@@ -117,7 +117,7 @@ when "00"=>
  sig_end_point<=sig_end_point+1;
  end if;  --如果（起始线=终点线）且（起始站=终点站）那就发出警告，默认终点站加一站
 
- end_point<=conv_std_logic_vector(sig_end_point,5);
+ end_point<=conv_std_logic_vector(sig_end_point,32);
  end_point32<=conv_std_logic_vector(sig_end_point,32);
  dispdata<=end_point32; --显示
  
