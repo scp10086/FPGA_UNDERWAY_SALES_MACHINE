@@ -23,9 +23,9 @@
 module dispram(
     input clk,
     input[1:0]startline,
-    input[5:0]startpoint,
+    input[4:0]startpoint,
     input[1:0]endline,
-    input[5:0]endpoint,
+    input[4:0]endpoint,
     output[3:0]price
     );
 wire clk_disp;
