@@ -100,6 +100,8 @@ use STD.textio.all;
 
 4. [真 multi driven net解决方案](https://forums.xilinx.com/t5/Synthesis/Synth-8-6859-multi-driven-net-on-pin-output-error/m-p/952277#M30421)
 
+5. [wire 赋初值导致multi driven net](https://www.xilinx.com/support/answers/60013.html)
+
 # 重点难题的解决方案（王宸TQL）
 
 原始方案一（难度较大） 我们将找到的南京地铁票价的excel表格导出到SD卡里，然后用VHDL读取SD卡的数据。
