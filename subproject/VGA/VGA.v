@@ -21,33 +21,23 @@
 
 
 module VGA(
-    input clk,
+    input clk_vga,
+    input[11:0] colour,
     output hsync,
     output vsync,
     output[3:0]vgared,
     output[3:0]vgagreen,
-    output[3:0]vgablue
-
+    output[3:0]vgablue,
+    output[18:0]addrb
     );
 parameter ta = 64,tb = 120,tc = 640,td = 16,te = 840,to = 3,tp = 16, tq = 480,tr = 1, ts = 500;
 reg[10:0]x_counter = 0;
 reg[10:0]y_counter = 0;
 reg[18:0]addr = 9999;
 reg hs,vs;
-wire[11:0]colour;
-wire clk_vga;
 
-clk_wiz_0 uut_tim(
-.clk_in1(clk),
-.clk_out1(clk_vga)
 
-);
-dispram uut_disp(
-.clk(clk_vga),
-.ramaddrb(addr),
-.ramdoutb(colour)
 
-);
 assign    vgared  = colour[11:8];
 assign    vgagreen  = colour[7:4];
 assign    vgablue  = colour[3:0];
@@ -79,7 +69,6 @@ begin
 end   
 
 always@(negedge clk_vga)
-    if()
 begin
 
 end 

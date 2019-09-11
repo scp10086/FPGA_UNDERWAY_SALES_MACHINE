@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2019/09/09 19:47:38
+// Create Date: 2019/09/11 14:42:00
 // Design Name: 
-// Module Name: dispram
+// Module Name: computeprice
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,35 +20,20 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module dispram(
+module computeprice(
     input clk,
     input[1:0]startline,
     input[5:0]startpoint,
     input[1:0]endline,
     input[5:0]endpoint,
-    output[3:0]price
+    output reg[18:0]price_addr
+    
     );
-wire clk_disp;
-wire[18:0]ramaddra ;
-
-wire[11:0]ramdouta ;
-
-reg[18:0]ramaddrb = 19'd10000;
-wire[11:0]ramdoutb ;
-
-begin 
-clk_wiz_0 uut_tim(
-.clk_in1(clk),
-.clk_out1(clk_disp)
-
-);
-
 reg[18:0]romaddra_host = 19'h0;
 reg[18:0]romaddra_slave = 19'h0;
 reg[6:0]set_100 = 7'd100;
-reg[18:0]price_addr;
-assign price = ramdouta[3:0];
-always @(negedge clk_disp)
+
+always @(negedge clk)
 begin
     case(startline)
         2'b00:
@@ -87,44 +72,6 @@ endcase;
         end
 endcase;
 price_addr = romaddra_slave + romaddra_host;
-
 end
-
-//computeprice cp(
-//.clk(clk_disp),
-//.startline(startline),
-//.startpoint(startpoint),
-//.endline(endline),
-//.endpoint(endpoint),
-//.price_addr(ramaddra)
-//);
-
-
-//VGA vga(
-//.clk_vga(clk_disp),
-//.colour(ramdoutb),
-//    output hsync,
-//    output vsync,
-//    output[3:0]vgared,
-//    output[3:0]vgagreen,
-//    output[3:0]vgablue,
-//    output[18:0]addrb
-//    );
-
-blk_mem_gen_0 uut_ram(
-    .clka(clk_disp),
-    .ena(1),
-    .wea(0),
-    .addra(price_addr),
-    .dina(0),
-    .douta(ramdouta),
-    .clkb(clk_disp),
-    .enb(1),
-    .web(0),
-    .addrb(ramaddrb),
-    .dinb(0),
-    .doutb(ramdoutb)
-    ); 
- end
 
 endmodule
