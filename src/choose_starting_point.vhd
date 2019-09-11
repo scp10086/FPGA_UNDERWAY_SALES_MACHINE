@@ -34,9 +34,9 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity choose_starting_point is
   Port (clk1,up1,down1,confirm1:in std_logic;
-  get_starting_line:in std_logic_vector(1 downto 0);
+  get_starting_line:in std_logic_vector(31 downto 0);
         --starting_point:out std_logic_vector(4 downto 0)
-  starting_point:out std_logic_vector(4 downto 0);
+  starting_point:out std_logic_vector(31 downto 0);
   get_present_state:in std_logic_vector(3 downto 0);
   dispdata :out std_logic_vector(31 downto 0)
         );
@@ -120,7 +120,7 @@ when "00"=>
       end if;
       
  end case;
- starting_point<=conv_std_logic_vector(sig_starting_point,5);
+ starting_point<=conv_std_logic_vector(sig_starting_point,32);
  starting_point32<=conv_std_logic_vector(sig_starting_point,32);
  dispdata<=starting_point32; --ÏÔÊ¾£¬
 end if;

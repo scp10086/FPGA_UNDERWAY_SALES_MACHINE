@@ -34,14 +34,14 @@ use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
 
 entity pay is
   Port (clk,switch0,switch1,switch2,switch3,confirm:in std_logic;
-        real_pay:out std_logic_vector(4 downto 0);
+        real_pay:out std_logic_vector(31 downto 0);
         get_present_state:in std_logic_vector(3 downto 0);
         dispdata :out std_logic_vector(31 downto 0)
        ); 
 end pay;
 
 architecture Behavioral of pay is
-signal sig_pay:std_logic_vector(4 downto 0);
+signal sig_pay:std_logic_vector(31 downto 0);
 signal sig_pay32:std_logic_vector(31 downto 0);
 signal confirm0,switch00,switch10,switch20,switch30:std_logic;
 
@@ -70,7 +70,7 @@ if (get_present_state="0111") then
   if (switch3='1'and switch30='0') then temp:=temp+20;end if;
 end if;
 if(confirm='1' and confirm0='0') then --按确认则投币完毕
-sig_pay<=conv_std_logic_vector(temp,5);
+sig_pay<=conv_std_logic_vector(temp,32);
 sig_pay32<=conv_std_logic_vector(temp,32);
 dispdata<=sig_pay32; --显示，这里是32位2进制数
 end if;
