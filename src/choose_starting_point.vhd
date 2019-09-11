@@ -38,10 +38,7 @@ entity choose_starting_point is
         --starting_point:out std_logic_vector(4 downto 0)
   starting_point:out std_logic_vector(4 downto 0);
   get_present_state:in std_logic_vector(3 downto 0);
-  dispdata :in std_logic_vector(31 downto 0);
-          seg_able :in std_logic_vector(7 downto 0);
-          segg :out std_logic_vector(7 downto 0);
-          an :out std_logic_vector(7 downto 0)
+  dispdata :out std_logic_vector(31 downto 0)
         );
 end choose_starting_point;
 
@@ -64,31 +61,7 @@ signal confirm10,up10,down10:std_logic;
 signal sig_starting_point:integer;
 signal starting_point32:std_logic_vector(31 downto 0);
 
-component seven_segment_disp_0
-port
- (
-    clk :in std_logic;
-    dispdata :in std_logic_vector(31 downto 0);
-    seg_able :in std_logic_vector(7 downto 0);
-    segg :out std_logic_vector(7 downto 0);
-    an :out std_logic_vector(7 downto 0)
- );
-end component;
-signal disp_data_2 : std_logic_vector(31 downto 0);
-signal seg_able_2 : std_logic_vector( 7 downto 0);
-
 begin
-
-seg_able_2 <= "11111111"; 
-
-segment_disp_0 : seven_segment_disp_0
-port map(
-        clk => clk1,
-        dispdata =>  disp_data_2,
-        seg_able =>  seg_able_2,
-        segg => segg,
-        an => an  
-);
 
 process(clk1)
 begin
@@ -149,7 +122,7 @@ when "00"=>
  end case;
  starting_point<=conv_std_logic_vector(sig_starting_point,5);
  starting_point32<=conv_std_logic_vector(sig_starting_point,32);
- disp_data_2<=starting_point32; --ÏÔÊ¾£¬
+ dispdata<=starting_point32; --ÏÔÊ¾£¬
 end if;
 end process choosing;
 end Behavioral;

@@ -34,44 +34,19 @@ use IEEE.STD_LOGIC_UNSIGNED.All;--数据类型转换
 
 entity give_change is
   Port (clk,flag0:in std_logic;
-        get_real_pay,get_should_pay,ticket_price:in integer;
-        change:out integer;
+        get_real_pay,ticket_price,get_amount:in integer; --ticket_price是选的票价
+        change:out integer; --get_price是票价表里的票价
+        get_price:in std_logic_vector(3 downto 0);
         get_present_state:in std_logic_vector(3 downto 0);
-        dispdata :in std_logic_vector(31 downto 0);
-                        seg_able :in std_logic_vector(7 downto 0);
-                        segg :out std_logic_vector(7 downto 0);
-                        an :out std_logic_vector(7 downto 0));
+        dispdata :out std_logic_vector(31 downto 0));
 end give_change;
 
 architecture Behavioral of give_change is
-signal sig_change32:std_logic_vector(31 downto 0);
+signal sig_change32,sig_real_pay,sig_should_pay,sig_ticket_price:std_logic_vector(31 downto 0);
 signal sig_change:integer;
 
-component seven_segment_disp_0
-port
- (
-    clk :in std_logic;
-    dispdata :in std_logic_vector(31 downto 0);
-    seg_able :in std_logic_vector(7 downto 0);
-    segg :out std_logic_vector(7 downto 0);
-    an :out std_logic_vector(7 downto 0)
- );
-end component;
-signal disp_data_2 : std_logic_vector(31 downto 0);
-signal seg_able_2 : std_logic_vector( 7 downto 0);
 
 begin
-
-seg_able_2 <= "11111111"; 
-
-segment_disp_0 : seven_segment_disp_0
-port map(
-        clk => clk,
-        dispdata =>  disp_data_2,
-        seg_able =>  seg_able_2,
-        segg => segg,
-        an => an  
-);
 
 process(clk)
 begin
@@ -85,12 +60,16 @@ begin
 
 if (clk'event and clk='1') then
 if(get_present_state="1000") then
+sig_should_pay<=get_amount*get_price;
+sig_real_pay<=conv_std_logic_vector(get_real_pay,32);
+sig_ticket_price<=conv_std_logic_vector(ticket_price,32);
+
 if(flag0='0') then
-  sig_change<=get_real_pay-get_should_pay;
-elsif(flag0='1') then sig_change<=get_real_pay-ticket_price;
+  sig_change32<=sig_real_pay-sig_should_pay;
+elsif(flag0='1') then sig_change32<=sig_real_pay-sig_ticket_price;
 end if;
-sig_change32<=conv_std_logic_vector(sig_change,32);
-disp_data_2<=sig_change32; --显示，这里是32位2进制数
+--sig_change32<=conv_std_logic_vector(sig_change,32);
+dispdata<=sig_change32; --显示，这里是32位2进制数
 end if;
 end if;
 

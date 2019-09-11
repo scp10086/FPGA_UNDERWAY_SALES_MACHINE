@@ -31,10 +31,7 @@ entity choose_end_point is
         get_starting_point:in std_logic_vector(4 downto 0);
         end_point:out std_logic_vector(4 downto 0);
         get_present_state:in std_logic_vector(3 downto 0);
-        dispdata :in std_logic_vector(31 downto 0);
-                  seg_able :in std_logic_vector(7 downto 0);
-                  segg :out std_logic_vector(7 downto 0);
-                  an :out std_logic_vector(7 downto 0)
+        dispdata :out std_logic_vector(31 downto 0)
         );
 end choose_end_point;
 
@@ -50,31 +47,7 @@ signal sig_end_point:integer;
 --signal sig_end_3_point:integer range 29 downto 1;--把信号sig_starting_3_point(即1号线的站点)定义成一个1~29的整数
 --signal sig_end_4_point:integer range 18 downto 1;--把信号sig_starting_4_point(即1号线的站点)定义成一个1~18的整数
 
-component seven_segment_disp_0
-port
- (
-    clk :in std_logic;
-    dispdata :in std_logic_vector(31 downto 0);
-    seg_able :in std_logic_vector(7 downto 0);
-    segg :out std_logic_vector(7 downto 0);
-    an :out std_logic_vector(7 downto 0)
- );
-end component;
-signal disp_data_2 : std_logic_vector(31 downto 0);
-signal seg_able_2 : std_logic_vector( 7 downto 0);
-
-
 begin
-
-seg_able_2 <= "11111111"; 
-segment_disp_0 : seven_segment_disp_0
-port map(
-        clk => clk2,
-        dispdata =>  disp_data_2,
-        seg_able =>  seg_able_2,
-        segg => segg,
-        an => an  
-);
 
 
 --例化模块
@@ -146,7 +119,7 @@ when "00"=>
 
  end_point<=conv_std_logic_vector(sig_end_point,5);
  end_point32<=conv_std_logic_vector(sig_end_point,32);
- disp_data_2<=end_point32; --显示
+ dispdata<=end_point32; --显示
  
 
 end if;

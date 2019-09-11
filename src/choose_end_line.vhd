@@ -36,8 +36,7 @@ entity choose_end_line is
         --end_line:out std_logic_vector(3 downto 0) 
         end_line:out std_logic_vector(1 downto 0);
         get_present_state:in std_logic_vector(3 downto 0);
-        segg :out std_logic_vector(7 downto 0);
-                an :out std_logic_vector(7 downto 0)
+        dispdata :out std_logic_vector(31 downto 0)
         );
 end choose_end_line;
 
@@ -46,32 +45,7 @@ signal end_line32:std_logic_vector(31 downto 0);
 signal sig_end_line:integer range 3 downto 0;--把信号sig_end_line定义成一个1~4的整数
 signal confirm0,up0,down0:std_logic;
 
-component seven_segment_disp_0
-port
- (
-    clk :in std_logic;
-    dispdata :in std_logic_vector(31 downto 0);
-    seg_able :in std_logic_vector(7 downto 0);
-    segg :out std_logic_vector(7 downto 0);
-    an :out std_logic_vector(7 downto 0)
- );
-end component;
-signal disp_data_2 : std_logic_vector(31 downto 0);
-signal seg_able_2 : std_logic_vector( 7 downto 0);
-
 begin
-
-seg_able_2 <= "11111111"; 
-
-segment_disp_0 : seven_segment_disp_0
-port map(
-        clk => clk,
-        dispdata =>  disp_data_2,
-        seg_able =>  seg_able_2,
-        segg => segg,
-        an => an  
-);
-
 
 process(clk)
 begin
@@ -95,7 +69,7 @@ end if;
 end if;
 end_line<=conv_std_logic_vector(sig_end_line,2);--把线路的1、2、3、4转换成4位二进制数
 end_line32<=conv_std_logic_vector(sig_end_line,32);
-disp_data_2<=end_line32; --显示，这里是32位2进制数
+dispdata<=end_line32; --显示，这里是32位2进制数
 end process choosing;
 
 end Behavioral;

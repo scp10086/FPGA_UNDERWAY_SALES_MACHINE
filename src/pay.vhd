@@ -34,45 +34,18 @@ use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
 
 entity pay is
   Port (clk,switch0,switch1,switch2,switch3,confirm:in std_logic;
-        real_pay:out integer;
+        real_pay:out std_logic_vector(4 downto 0);
         get_present_state:in std_logic_vector(3 downto 0);
-        dispdata :in std_logic_vector(31 downto 0);
-                seg_able :in std_logic_vector(7 downto 0);
-                segg :out std_logic_vector(7 downto 0);
-                an :out std_logic_vector(7 downto 0)
+        dispdata :out std_logic_vector(31 downto 0)
        ); 
 end pay;
 
 architecture Behavioral of pay is
-signal sig_pay:integer;
+signal sig_pay:std_logic_vector(4 downto 0);
 signal sig_pay32:std_logic_vector(31 downto 0);
 signal confirm0,switch00,switch10,switch20,switch30:std_logic;
 
-component seven_segment_disp_0
-port
- (
-    clk :in std_logic;
-    dispdata :in std_logic_vector(31 downto 0);
-    seg_able :in std_logic_vector(7 downto 0);
-    segg :out std_logic_vector(7 downto 0);
-    an :out std_logic_vector(7 downto 0)
- );
-end component;
-signal disp_data_2 : std_logic_vector(31 downto 0);
-signal seg_able_2 : std_logic_vector( 7 downto 0);
-
 begin
-
-seg_able_2 <= "11111111"; 
-
-segment_disp_0 : seven_segment_disp_0
-port map(
-        clk => clk,
-        dispdata =>  disp_data_2,
-        seg_able =>  seg_able_2,
-        segg => segg,
-        an => an  
-);
 
 process(clk)
 begin
@@ -97,9 +70,9 @@ if (get_present_state="0111") then
   if (switch3='1'and switch30='0') then temp:=temp+20;end if;
 end if;
 if(confirm='1' and confirm0='0') then --按确认则投币完毕
-sig_pay<=temp;
-sig_pay32<=conv_std_logic_vector(sig_pay,32);
-disp_data_2<=sig_pay32; --显示，这里是32位2进制数
+sig_pay<=conv_std_logic_vector(temp,5);
+sig_pay32<=conv_std_logic_vector(temp,32);
+dispdata<=sig_pay32; --显示，这里是32位2进制数
 end if;
 end if;
 end process;
