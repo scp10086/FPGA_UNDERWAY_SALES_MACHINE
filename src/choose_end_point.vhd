@@ -77,7 +77,9 @@ begin
 
  if (clk2'event and clk2='1') then
  if (get_present_state="0101") then
- temp1:=0;sig_end_point<=temp1;
+  temp1:=0;sig_end_point<=temp1;
+  end if;
+ if (get_present_state="0101") then
    if (up2='1'and up0='0') then temp1:=temp1+1;sig_end_point<=temp1;end if;
    if (down2='1'and down0='0') then temp1:=temp1-1;sig_end_point<=temp1;end if;
  --  if (confirm2='1'and confirm0='0') then sig_end_point<=temp1;end if;
