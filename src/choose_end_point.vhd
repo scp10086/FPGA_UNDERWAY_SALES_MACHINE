@@ -72,7 +72,7 @@ variable temp2:integer range 25 downto 0:=11;
 variable temp3:integer range 28 downto 0:=21;
 variable temp4:integer range 17 downto 0:=4;
 begin
-if (get_present_state="0100") then
+if (get_present_state="0101") then
 --temp1:=8;  --地铁一号线默认初始站为新街口
 --temp2:=12; --地铁二号线默认初始站为大行宫
 --temp3:=22; --地铁三号线默认初始站为南京南
