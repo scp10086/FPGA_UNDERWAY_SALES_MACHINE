@@ -63,8 +63,7 @@ end component;
 component choose_starting_line
 Port (clk,up,down,confirm:in std_logic;
       get_present_state:in std_logic_vector(3 downto 0);
-      starting_line:out std_logic_vector(31 downto 0);
-      dispdata :out std_logic_vector(31 downto 0)   
+      starting_line:out std_logic_vector(31 downto 0)
       );
 end component;
 
@@ -73,16 +72,14 @@ component choose_starting_point
 Port (clk1,up1,down1,confirm1:in std_logic;
 get_starting_line:in std_logic_vector(31 downto 0);
 starting_point:out std_logic_vector(31 downto 0);
-get_present_state:in std_logic_vector(3 downto 0);
-dispdata :out std_logic_vector(31 downto 0));
+get_present_state:in std_logic_vector(3 downto 0)
 end component;
 
 --模块4 选终点线路
 component choose_end_line
 Port (clk,up,down,confirm:in std_logic;
       end_line:out std_logic_vector(31 downto 0);
-      get_present_state:in std_logic_vector(3 downto 0);
-      dispdata :out std_logic_vector(31 downto 0) );
+      get_present_state:in std_logic_vector(3 downto 0)
 end component;
 
 --模块5 选终点站点
@@ -92,8 +89,7 @@ Port (clk2,up2,down2,confirm2:in std_logic;
       get_starting_line,get_end_line:in std_logic_vector(31 downto 0);
       get_starting_point:in std_logic_vector(31 downto 0);
       end_point:out std_logic_vector(31 downto 0);
-      get_present_state:in std_logic_vector(3 downto 0);
-      dispdata :out std_logic_vector(31 downto 0) );
+      get_present_state:in std_logic_vector(3 downto 0)
 end component;
 
 --模块6 判断过了5秒无操作
@@ -116,12 +112,6 @@ Port(
             led3:OUT std_logic; 
             get_total:IN std_logic_vector(4 downto 0);    
             get_real_pay:IN std_logic_vector(4 downto 0); 
-            --switch0:IN std_logic;  --四个开关，投入1元、5元、10元、20元
-            --switch1:IN std_logic;
-            --switch2:IN std_logic;
-            --switch3:IN std_logic;  --四个开关，投入1元、5元、10元、20元
-            --num:OUT std_logic_vector( 7 downto 0 );  --数码管模块的第几位数
-            --dig:OUT std_logic_vector( 7 downto 0 );  --数码管模块的具体管脚
             get_up_to_5sec:IN std_logic;
             status:out std_logic_vector(3 downto 0)     
         );   
@@ -132,7 +122,6 @@ component choose_price
 Port (clk,switch4,switch5,switch6,switch7,confirm:in std_logic; --这四个开关分别对应着快速选票价：2元、3元、5元、7元
         ticket_price:out std_logic_vector(31 downto 0);
         flag0:out std_logic;
-        dispdata :out std_logic_vector(31 downto 0);
         get_present_state:in std_logic_vector(3 downto 0)
         );
 end component;
@@ -141,7 +130,6 @@ end component;
 component pay
 Port (clk,switch0,switch1,switch2,switch3:in std_logic;
         real_pay:out std_logic_vector(4 downto 0);
-        dispdata :out std_logic_vector(31 downto 0);
         get_present_state:in std_logic_vector(3 downto 0)
        ); 
 end component;
@@ -152,7 +140,6 @@ Port (clk,flag0:in std_logic;
         get_amount:in std_logic_vector(1 downto 0);
         get_real_pay:in std_logic_vector(4 downto 0);
         change,total:out std_logic_vector(4 downto 0);
-        dispdata :out std_logic_vector(31 downto 0);
         get_price,ticket_price:in std_logic_vector(3 downto 0);
         get_present_state:in std_logic_vector(3 downto 0));
 end component;
@@ -161,8 +148,8 @@ end component;
 component refund
 Port (clk:in std_logic;
         get_real_pay:in std_logic_vector(4 downto 0);
-        get_present_state:in std_logic_vector(3 downto 0);
-        dispdata :out std_logic_vector(31 downto 0)
+        get_present_state:in std_logic_vector(3 downto 0)
+        --dispdata :out std_logic_vector(31 downto 0)
         );
 end component;
 
@@ -193,9 +180,25 @@ end component;
 component amount
 Port (clk,up,down,confirm:in std_logic; 
         ticket_amount:out std_logic_vector(1 downto 0);
-        get_present_state:in std_logic_vector(3 downto 0);
-        dispdata :out std_logic_vector(31 downto 0)
+        get_present_state:in std_logic_vector(3 downto 0)
         );
+end component;
+
+--模块15 显示模块
+component display
+Port (clk:in std_logic;
+       get_present_state:in std_logic_vector(3 downto 0);
+       dispdata :out std_logic_vector(31 downto 0 );
+       get_starting_line:in std_logic_vector(31 downto 0 );
+       get_starting_point:in std_logic_vector(31 downto 0);
+       get_end_line: in std_logic_vector(31 downto 0 );
+       get_end_point :in std_logic_vector(31 downto 0 );
+       get_ticket_price:in std_logic_vector(31 downto 0 );
+       get_real_pay:in std_logic_vector(31 downto 0 );
+       get_change:in std_logic_vector(31 downto 0 );
+       get_refund:in std_logic_vector(31 downto 0 );
+       get_amount:in std_logic_vector(31 downto 0 )
+);
 end component;
 
 signal disp_data_2 : std_logic_vector(31 downto 0);
@@ -233,8 +236,7 @@ port map(
   down=>sig_down0,
   confirm=>sig_confirm0,
   starting_line=>starting_line,
-  get_present_state=>present_state,
-  dispdata=>disp_data_2
+  get_present_state=>present_state
 );
 
 mux3:choose_starting_point
@@ -245,8 +247,8 @@ port map(
   confirm1=>sig_confirm0,
   get_starting_line=>starting_line,
   starting_point=>starting_point,
-  get_present_state=>present_state,
-  dispdata=>disp_data_2
+  get_present_state=>present_state
+--dispdata=>disp_data_2
 );
 
 mux4:choose_end_line
@@ -256,8 +258,8 @@ port map(
   down=>sig_down0,
   confirm=>sig_confirm0,
   end_line=>end_line,
-  get_present_state=>present_state,
-  dispdata=>disp_data_2
+  get_present_state=>present_state
+  --dispdata=>disp_data_2
 );  
   
 mux5:choose_end_point
@@ -271,8 +273,8 @@ port map(
   get_starting_point=>starting_point,
   get_end_line=>end_line,
   end_point=>end_point,
-  get_present_state=>present_state,
-  dispdata=>disp_data_2
+  get_present_state=>present_state
+  --dispdata=>disp_data_2
 );  
   
 --mux6:five_sec_passed
@@ -298,10 +300,6 @@ led2=>led2,
 led3=>led3,
 get_total=>total,
 get_real_pay=>real_pay,
---switch0=>switch0,
---switch1=>switch1,
---switch2=>switch2,
---switch3=>switch3,
 get_up_to_5sec=>up_to_5sec,
 status=>present_state
 );
@@ -314,7 +312,7 @@ switch4=>switch4,
 switch5=>switch5,
 switch6=>switch6,
 switch7=>switch7,
-dispdata=>disp_data_2,
+--dispdata=>disp_data_2,
 flag0=>flag0,
 ticket_price=>ticket_price,
 get_present_state=>present_state
@@ -328,7 +326,7 @@ switch1=>switch1,
 switch2=>switch2,
 switch3=>switch3,
 real_pay=>real_pay,
-dispdata=>disp_data_2,
+--dispdata=>disp_data_2,
 get_present_state=>present_state
 );
 
@@ -342,7 +340,7 @@ change=>change,
 total=>total,
 get_price=>price2,  --票价表里的票价
 get_amount=>ticket_amount,
-dispdata=>disp_data_2,
+--dispdata=>disp_data_2,
 get_present_state=>present_state
 );
 
@@ -350,7 +348,7 @@ mux11:refund
 port map(
 clk=>clk,
 get_real_pay=>real_pay,
-dispdata=>disp_data_2,
+--dispdata=>disp_data_2,
 get_present_state=>present_state
 );
 
@@ -381,7 +379,22 @@ up=>sig_up0,
 down=>sig_down0,
 confirm=>sig_confirm0,
 ticket_amount=>ticket_amount,
-
 get_present_state=>present_state
+);
+
+mux15:display
+port map(
+clk=>clk,
+       get_present_state=>present_state,
+       dispdata =>disp_data_2,
+       get_starting_line=>starting_line,
+       get_starting_point=>starting_point,
+       get_end_line=>end_line,
+       get_end_point =>end_point,
+       get_ticket_price=>ticket_price,
+       get_real_pay=>real_pay,
+       get_change=>change,
+       get_refund=>real_pay,
+       get_amount=>ticket_amount
 );
 end Behavioral;

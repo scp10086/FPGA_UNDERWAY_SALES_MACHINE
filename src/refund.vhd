@@ -34,8 +34,9 @@ use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
 entity refund is
   Port (clk:in std_logic;
         get_real_pay:in std_logic_vector(31 downto 0);
-        get_present_state:in std_logic_vector(3 downto 0);
-        dispdata :out std_logic_vector(31 downto 0));
+        get_present_state:in std_logic_vector(3 downto 0)
+        --dispdata :out std_logic_vector(31 downto 0)
+        );
 end refund;
 
 architecture Behavioral of refund is
@@ -51,7 +52,7 @@ if(get_present_state="1001") then
 --显示退款即可，refund就是get_real_pay
   sig_real_pay<=get_real_pay;
   sig_refund<=sig_real_pay;
-  dispdata<=sig_refund; --显示，这里是32位2进制数
+  --dispdata<=sig_refund; --显示，这里是32位2进制数
 end if;
 end if;
 end process;
