@@ -72,10 +72,10 @@ case present_state is
 
   when "0010"=>  --选当前站站点状态
     
-    if (up0='0' and up='1') then present_state<="0011";end if; --按“上”跳到选票价状态
-    if (down0='0' and down='1') then present_state<="0100";end if; --按“下”跳到选目的线路状态
-    if (back0='0' and back='1') then present_state<="0001";
-    end if;
+   -- if (up0='0' and up='1') then present_state<="0011";end if; --按“上”跳到选票价状态
+    if (confirm0='0' and confirm='1') then present_state<="1010";end if;  --按确定跳到状态10
+   -- if (down0='0' and down='1') then present_state<="0100";end if; --按“下”跳到选目的线路状态
+    if (back0='0' and back='1') then present_state<="0001";end if;
 
 
   when "0011"=>  --选票价状态
@@ -122,7 +122,12 @@ case present_state is
   when "1001"=>  --退币状态
     if (confirm0='0' and confirm='1') then present_state<="0000";end if;
    -- if (get_up_to_5sec='1') then present_state<="0000";end if;  --如果过了5秒没操作，跳到等待状态
-
+ 
+ when "1010"=>  --状态10 判断进入选票价还是选终点线
+  if (up0='0' and up='1') then present_state<="0011";end if; --按上 去选票价
+   if (down0='0' and down='1') then present_state<="0100";end if; --按下 去选终点线
+ 
+ 
   when others=>   --初始状态是s1
     present_state<="0000";
 

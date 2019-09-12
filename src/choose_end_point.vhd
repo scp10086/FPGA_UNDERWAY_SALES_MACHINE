@@ -58,6 +58,8 @@ begin
 process(clk2)
 begin
 if (clk2'event and clk2='1') then
+end_point32<=conv_std_logic_vector(sig_end_point,32);
+    end_point<=end_point32;
     confirm0<=confirm2;
     up0<=up2;
     down0<=down2;
@@ -67,58 +69,27 @@ end process;
 
 choosing:process(clk2,up2,down2,confirm2,get_present_state)
 
-variable temp1:integer range 26 downto 0:=7;
-variable temp2:integer range 25 downto 0:=11;
-variable temp3:integer range 28 downto 0:=21;
-variable temp4:integer range 17 downto 0:=4;
+variable temp1:integer range 28 downto 0:=7;
+--variable temp2:integer range 25 downto 0:=11;
+--variable temp3:integer range 28 downto 0:=21;
+--variable temp4:integer range 17 downto 0:=4;
 begin
-if (get_present_state="0101") then
---temp1:=8;  --地铁一号线默认初始站为新街口
---temp2:=12; --地铁二号线默认初始站为大行宫
---temp3:=22; --地铁三号线默认初始站为南京南
---temp4:=5;  --地铁四号线默认初始站为鸡鸣寺
 
-case get_end_line is --不同的线路
-when "00"=>
  if (clk2'event and clk2='1') then
-   if (up2='1'and up0='0') then temp1:=temp1+1;end if;
-   if (down2='1'and down0='0') then temp1:=temp1-1;end if;
-   if (confirm2='1'and confirm0='0') then sig_end_point<=temp1;end if;
+ if (get_present_state="0101") then
+   if (up2='1'and up0='0') then temp1:=temp1+1;sig_end_point<=temp1;end if;
+   if (down2='1'and down0='0') then temp1:=temp1-1;sig_end_point<=temp1;end if;
+ --  if (confirm2='1'and confirm0='0') then sig_end_point<=temp1;end if;
    --end_point<=conv_std_logic_vector(sig_end_1_point,5);--把整数站点转换成5位二进制数
  end if;
  
- when "01"=>
-  if (clk2'event and clk2='1') then
-    if (up2='1'and up0='0') then temp2:=temp2+1;end if;
-    if (down2='1'and down0='0') then temp2:=temp2-1;end if;
-    if (confirm2='1'and confirm0='0') then sig_end_point<=temp2;end if;
-    --end_point<=conv_std_logic_vector(sig_end_2_point,5);--把整数站点转换成5位二进制数
-  end if;
-  
-  when "10"=>
-    if (clk2'event and clk2='1') then
-      if (up2='1'and up0='0') then temp3:=temp3+1;end if;
-      if (down2='1'and down0='0') then temp3:=temp3-1;end if;
-      if (confirm2='1'and confirm0='0') then sig_end_point<=temp3;end if;
-      --end_point<=conv_std_logic_vector(sig_end_3_point,5);--把整数站点转换成5位二进制数
-    end if;
-    
-    when "11"=>
-      if (clk2'event and clk2='1') then
-        if (up2='1'and up0='0') then temp4:=temp4+1;end if;
-        if (down2='1'and down0='0') then temp2:=temp4-1;end if;
-        if (confirm2='1'and confirm0='0') then sig_end_point<=temp4;end if;
-        --end_point<=conv_std_logic_vector(sig_end_4_point,5);--把整数站点转换成5位二进制数
-      end if;
-      
- end case;
  
  if (get_starting_line=get_end_line and get_starting_point=sig_end_point) then warning<='1';
  sig_end_point<=sig_end_point+1;
  end if;  --如果（起始线=终点线）且（起始站=终点站）那就发出警告，默认终点站加一站
 
- end_point<=conv_std_logic_vector(sig_end_point,32);
- end_point32<=conv_std_logic_vector(sig_end_point,32);
+ --end_point<=conv_std_logic_vector(sig_end_point,32);
+ --end_point32<=conv_std_logic_vector(sig_end_point,32);
  --dispdata<=end_point32; --显示
  
 

@@ -40,19 +40,20 @@ entity amount is
 end amount;
 
 architecture Behavioral of amount is
-signal sig_amount:std_logic_vector(31 downto 0);--把信号sig_starting_line定义成一个1~4的整数
+signal sig_amount:integer range 3 downto 1;--把信号sig_starting_line定义成一个1~4的整数
 signal sig_amount32:std_logic_vector(31 downto 0);
 signal confirm0,up0,down0:std_logic;
-signal tem:integer range 3 downto 1;
+--signal tem:integer range 3 downto 1;
 begin
 
 process(clk)
 begin
 if (clk'event and clk='1') then
+    sig_amount32<=conv_std_logic_vector(sig_amount,32);
     confirm0<=confirm;
     up0<=up;
     down0<=down;
-    ticket_amount<=sig_amount;
+    ticket_amount<=sig_amount32;
 end if;
 end process;
 
@@ -62,13 +63,13 @@ begin
 
 if (clk'event and clk='1') then 
 if (get_present_state="0110") then
-if (up='1'and up0='0') then temp:=temp+1;end if;
-if (down='1'and down0='0') then temp:=temp-1;end if;
-if (confirm='1'and confirm0='0') then tem<=temp;end if;
+if (up='1'and up0='0') then temp:=temp+1;sig_amount<=temp;end if;
+if (down='1'and down0='0') then temp:=temp-1;sig_amount<=temp;end if;
+--if (confirm='1'and confirm0='0') then tem<=temp;end if;
 end if;
 end if;
-sig_amount<=conv_std_logic_vector(tem,32);
-sig_amount32<=conv_std_logic_vector(tem,32);
+--sig_amount<=conv_std_logic_vector(tem,32);
+--sig_amount32<=conv_std_logic_vector(tem,32);
 --dispdata<=sig_amount32; --显示，这里是32位2进制数
 --starting_line<=conv_std_logic_vector(sig_starting_line,4);--把线路的1、2、3、4转换成4位二进制数
 end process;

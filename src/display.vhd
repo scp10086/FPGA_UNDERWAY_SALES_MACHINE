@@ -67,6 +67,7 @@ case get_present_state is
   when "0111"=> dispdata<= get_real_pay+ "01110000000000000000000000000000";
   when "1000"=> dispdata<= get_change+ "10000000000000000000000000000000";
   when "1001"=> dispdata<= get_refund+ "10010000000000000000000000000000";
+  when "1010"=> dispdata<=  "10100000000000000000000000000000";
   when others=>dispdata<= x"00000000";
 end case;
 end if;

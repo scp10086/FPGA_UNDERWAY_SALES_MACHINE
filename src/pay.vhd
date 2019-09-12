@@ -41,7 +41,7 @@ entity pay is
 end pay;
 
 architecture Behavioral of pay is
-signal sig_pay:std_logic_vector(31 downto 0);
+signal sig_pay:integer;
 signal sig_pay32:std_logic_vector(31 downto 0);
 signal confirm0,switch00,switch10,switch20,switch30:std_logic;
 
@@ -50,12 +50,13 @@ begin
 process(clk)
 begin
 if (clk'event and clk='1') then
+sig_pay32<=conv_std_logic_vector(sig_pay,32);
+real_pay<=sig_pay32;
     confirm0<=confirm;
     switch00<=switch0;
     switch10<=switch1;
     switch20<=switch2;
     switch30<=switch3;
-    real_pay<=sig_pay;
 end if;
 end process;
 
@@ -64,16 +65,16 @@ variable temp:integer:=0;
 begin
 if (clk'event and clk='1') then
 if (get_present_state="0111") then
-  if (switch0='1'and switch00='0') then temp:=temp+1;end if; --拨动第一个开关上下一次算投入1元，下同
-  if (switch1='1'and switch10='0') then temp:=temp+5;end if;
-  if (switch2='1'and switch20='0') then temp:=temp+10;end if;
-  if (switch3='1'and switch30='0') then temp:=temp+20;end if;
+  if (switch0='1'and switch00='0') then temp:=temp+1;sig_pay<=temp;end if; --拨动第一个开关上下一次算投入1元，下同
+  if (switch1='1'and switch10='0') then temp:=temp+5;sig_pay<=temp;end if;
+  if (switch2='1'and switch20='0') then temp:=temp+10;sig_pay<=temp;end if;
+  if (switch3='1'and switch30='0') then temp:=temp+20;sig_pay<=temp;end if;
 end if;
-if(confirm='1' and confirm0='0') then --按确认则投币完毕
-sig_pay<=conv_std_logic_vector(temp,32);
-sig_pay32<=conv_std_logic_vector(temp,32);
+--if(confirm='1' and confirm0='0') then --按确认则投币完毕
+--sig_pay<=conv_std_logic_vector(temp,32);
+--sig_pay32<=conv_std_logic_vector(temp,32);
 --dispdata<=sig_pay32; --显示，这里是32位2进制数
-end if;
+--end if;
 end if;
 end process;
 
