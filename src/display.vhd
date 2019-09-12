@@ -21,7 +21,8 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --use IEEE.NUMERIC_STD.ALL;
@@ -57,15 +58,16 @@ if (clk'event and clk='1') then
 case get_present_state is
 
   when "0000"=> dispdata<= x"00000000";
-  when "0001"=> dispdata<= get_starting_line;
-  when "0010"=> dispdata<= get_starting_point;
-  when "0011"=> dispdata<= get_ticket_price;
-  when "0100"=> dispdata<= get_end_line;
-  when "0101"=> dispdata<= get_end_point;
-  when "0110"=> dispdata<= get_amount;
-  when "0111"=> dispdata<= get_real_pay;
-  when "1000"=> dispdata<= get_change;
-  when "1000"=> dispdata<= get_refund;
+  when "0001"=> dispdata<= get_starting_line + "00010000000000000000000000000000" ;
+  when "0010"=> dispdata<= get_starting_point + "00100000000000000000000000000000";
+  when "0011"=> dispdata<= get_ticket_price+ "00110000000000000000000000000000";
+  when "0100"=> dispdata<= get_end_line+ "01000000000000000000000000000000";
+  when "0101"=> dispdata<= get_end_point+ "01010000000000000000000000000000";
+  when "0110"=> dispdata<= get_amount+ "01100000000000000000000000000000";
+  when "0111"=> dispdata<= get_real_pay+ "01110000000000000000000000000000";
+  when "1000"=> dispdata<= get_change+ "10000000000000000000000000000000";
+  when "1001"=> dispdata<= get_refund+ "10010000000000000000000000000000";
+  when others=>dispdata<= x"00000000";
 end case;
 end if;
 end process;

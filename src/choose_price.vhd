@@ -89,9 +89,9 @@ begin
            --dispdata<=x"00000007";
            end if;
         end if;
-
+else flag0<='0';
   end if;
-  else flag0<='0';
+  
 end if;
 end process;
 

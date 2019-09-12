@@ -43,8 +43,8 @@ entity ceiling is
         switch2:IN std_logic;
         switch3:IN std_logic;
         switch4,switch5,switch6,switch7:in std_logic; --这四个开关分别对应着快速选票价：2元、3元、5元、7元
-        dispdata :in std_logic_vector(31 downto 0);
-        seg_able :in std_logic_vector(7 downto 0);
+        --dispdata :in std_logic_vector(31 downto 0);
+        --seg_able :in std_logic_vector(7 downto 0);
         segg :out std_logic_vector(7 downto 0);
         an :out std_logic_vector(7 downto 0)  
         );  --四个开关，投入1元、5元、10元、20元 ); 
@@ -132,7 +132,7 @@ end component;
 --模块9 投币
 component pay
 Port (clk,switch0,switch1,switch2,switch3:in std_logic;
-        real_pay:out std_logic_vector(4 downto 0);
+        real_pay:out std_logic_vector(31 downto 0);
         get_present_state:in std_logic_vector(3 downto 0)
        ); 
 end component;
@@ -140,17 +140,17 @@ end component;
 --模块10 找零出票
 component computechange
 Port (clk,flag0:in std_logic;
-        get_amount:in std_logic_vector(1 downto 0);
-        get_real_pay:in std_logic_vector(4 downto 0);
-        change,total:out std_logic_vector(4 downto 0);
-        get_price,ticket_price:in std_logic_vector(3 downto 0);
+        get_amount:in std_logic_vector(31 downto 0);
+        get_real_pay:in std_logic_vector(31 downto 0);
+        change,total:out std_logic_vector(31 downto 0);
+        get_price,ticket_price:in std_logic_vector(31 downto 0);
         get_present_state:in std_logic_vector(3 downto 0));
 end component;
 
 --模块11 退币
 component refund
 Port (clk:in std_logic;
-        get_real_pay:in std_logic_vector(4 downto 0);
+        get_real_pay:in std_logic_vector(31 downto 0);
         get_present_state:in std_logic_vector(3 downto 0)
         --dispdata :out std_logic_vector(31 downto 0)
         );
@@ -173,16 +173,16 @@ component dispram
 port
  (
     clk :in std_logic;
-    startline,endline:in std_logic_vector(1 downto 0);
-    startpoint,endpoint:in std_logic_vector(4 downto 0);
-    price:out std_logic_vector(3 downto 0)
+    startline,endline:in std_logic_vector(31 downto 0);
+    startpoint,endpoint:in std_logic_vector(31 downto 0);
+    price:out std_logic_vector(31 downto 0)
  );
 end component;
 
 --模块14 选票数
 component amount
 Port (clk,up,down,confirm:in std_logic; 
-        ticket_amount:out std_logic_vector(1 downto 0);
+        ticket_amount:out std_logic_vector(31 downto 0);
         get_present_state:in std_logic_vector(3 downto 0)
         );
 end component;

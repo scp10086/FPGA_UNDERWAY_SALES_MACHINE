@@ -22,11 +22,11 @@
 
 module dispram(
     input clk,
-    input[1:0]startline,
-    input[4:0]startpoint,
-    input[1:0]endline,
-    input[4:0]endpoint,
-    output[3:0]price
+    input[31:0]startline,
+    input[31:0]startpoint,
+    input[31:0]endline,
+    input[31:0]endpoint,
+    output[31:0]price
     );
 wire clk_disp;
 wire[18:0]ramaddra ;
@@ -47,7 +47,7 @@ reg[18:0]romaddra_host = 19'h0;
 reg[18:0]romaddra_slave = 19'h0;
 reg[6:0]set_100 = 7'd100;
 reg[18:0]price_addr;
-assign price = ramdouta[3:0];
+assign price[3:0] = ramdouta[3:0];
 always @(negedge clk_disp)
 begin
     case(startline)
