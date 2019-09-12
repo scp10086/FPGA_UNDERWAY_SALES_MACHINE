@@ -65,8 +65,12 @@ variable temp:integer range 3 downto 0:=0;--把变量starting_line定义成一个1~4的整
 begin
 
 if (clk'event and clk='1') then 
-if (get_present_state="0001") then
+if (get_present_state="0000") then
 temp:=0;sig_starting_line<=temp;
+end if;
+
+if (get_present_state="0001") then
+
 if (up='1'and up0='0') then temp:=temp+1;sig_starting_line<=temp;end if;
 if (down='1'and down0='0') then temp:=temp-1;sig_starting_line<=temp;end if;
 --if (confirm='1'and confirm0='0') then sig_starting_line<=temp;end if;
