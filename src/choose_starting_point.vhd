@@ -37,8 +37,8 @@ entity choose_starting_point is
   get_starting_line:in std_logic_vector(31 downto 0);
         --starting_point:out std_logic_vector(4 downto 0)
   starting_point:out std_logic_vector(31 downto 0);
-  get_present_state:in std_logic_vector(3 downto 0);
-  dispdata :out std_logic_vector(31 downto 0)
+  get_present_state:in std_logic_vector(3 downto 0)
+  --dispdata :out std_logic_vector(31 downto 0)
         );
 end choose_starting_point;
 
@@ -122,7 +122,7 @@ when "00"=>
  end case;
  starting_point<=conv_std_logic_vector(sig_starting_point,32);
  starting_point32<=conv_std_logic_vector(sig_starting_point,32);
- dispdata<=starting_point32; --ÏÔÊ¾£¬
+ --dispdata<=starting_point32; --ÏÔÊ¾£¬
 end if;
 end process choosing;
 end Behavioral;

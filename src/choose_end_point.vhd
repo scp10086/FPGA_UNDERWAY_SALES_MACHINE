@@ -30,8 +30,8 @@ entity choose_end_point is
         get_starting_line,get_end_line:in std_logic_vector(31 downto 0);
         get_starting_point:in std_logic_vector(31 downto 0);
         end_point:out std_logic_vector(31 downto 0);
-        get_present_state:in std_logic_vector(3 downto 0);
-        dispdata :out std_logic_vector(31 downto 0)
+        get_present_state:in std_logic_vector(3 downto 0)
+        --dispdata :out std_logic_vector(31 downto 0)
         );
 end choose_end_point;
 
@@ -119,7 +119,7 @@ when "00"=>
 
  end_point<=conv_std_logic_vector(sig_end_point,32);
  end_point32<=conv_std_logic_vector(sig_end_point,32);
- dispdata<=end_point32; --ÏÔÊ¾
+ --dispdata<=end_point32; --ÏÔÊ¾
  
 
 end if;

@@ -35,8 +35,8 @@ entity choose_end_line is
   Port (clk,up,down,confirm:in std_logic;
         --end_line:out std_logic_vector(3 downto 0) 
         end_line:out std_logic_vector(31 downto 0);
-        get_present_state:in std_logic_vector(3 downto 0);
-        dispdata :out std_logic_vector(31 downto 0)
+        get_present_state:in std_logic_vector(3 downto 0)
+        --dispdata :out std_logic_vector(31 downto 0)
         );
 end choose_end_line;
 
@@ -69,7 +69,7 @@ end if;
 end if;
 end_line<=conv_std_logic_vector(sig_end_line,32);--把线路的1、2、3、4转换成4位二进制数
 end_line32<=conv_std_logic_vector(sig_end_line,32);
-dispdata<=end_line32; --显示，这里是32位2进制数
+--dispdata<=end_line32; --显示，这里是32位2进制数
 end process choosing;
 
 end Behavioral;

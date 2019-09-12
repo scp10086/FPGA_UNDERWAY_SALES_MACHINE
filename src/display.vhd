@@ -39,8 +39,8 @@ entity display is
        get_starting_point:in std_logic_vector(31 downto 0);
        get_end_line: in std_logic_vector(31 downto 0 );
        get_end_point :in std_logic_vector(31 downto 0 );
-       get_price:in std_logic_vector(31 downto 0 );
-       get_pay:in std_logic_vector(31 downto 0 );
+       get_ticket_price:in std_logic_vector(31 downto 0 );
+       get_real_pay:in std_logic_vector(31 downto 0 );
        get_change:in std_logic_vector(31 downto 0 );
        get_refund:in std_logic_vector(31 downto 0 );
        get_amount:in std_logic_vector(31 downto 0 )
@@ -59,12 +59,13 @@ case get_present_state is
   when "0000"=> dispdata<= x"00000000";
   when "0001"=> dispdata<= get_starting_line;
   when "0010"=> dispdata<= get_starting_point;
-  when "0011"=> dispdata<= get_end_line;
-  when "0100"=> dispdata<= get_end_point;
-  when "0001"=> dispdata<= get_starting_line;
-  when "0010"=> dispdata<= get_starting_point;
-  when "0011"=> dispdata<= get_end_line;
-  when "0100"=> dispdata<= get_end_point;
+  when "0011"=> dispdata<= get_ticket_price;
+  when "0100"=> dispdata<= get_end_line;
+  when "0101"=> dispdata<= get_end_point;
+  when "0110"=> dispdata<= get_amount;
+  when "0111"=> dispdata<= get_real_pay;
+  when "1000"=> dispdata<= get_change;
+  when "1000"=> dispdata<= get_refund;
 end case;
 end if;
 end process;

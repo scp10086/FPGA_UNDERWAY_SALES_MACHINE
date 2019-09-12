@@ -34,8 +34,9 @@ use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
 entity amount is
   Port (clk,up,down,confirm:in std_logic; 
         ticket_amount:out std_logic_vector(31 downto 0);
-        get_present_state:in std_logic_vector(3 downto 0);
-        dispdata :out std_logic_vector(31 downto 0));
+        get_present_state:in std_logic_vector(3 downto 0)
+        --dispdata :out std_logic_vector(31 downto 0)
+        );
 end amount;
 
 architecture Behavioral of amount is
@@ -68,7 +69,7 @@ end if;
 end if;
 sig_amount<=conv_std_logic_vector(tem,32);
 sig_amount32<=conv_std_logic_vector(tem,32);
-dispdata<=sig_amount32; --显示，这里是32位2进制数
+--dispdata<=sig_amount32; --显示，这里是32位2进制数
 --starting_line<=conv_std_logic_vector(sig_starting_line,4);--把线路的1、2、3、4转换成4位二进制数
 end process;
 
