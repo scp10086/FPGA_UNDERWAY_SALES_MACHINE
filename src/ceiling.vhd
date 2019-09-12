@@ -80,7 +80,7 @@ end component;
 --模块4 选终点线路
 component choose_end_line
 Port (clk,up,down,confirm:in std_logic;
-      end_line:out std_logic_vector(1 downto 0);
+      end_line:out std_logic_vector(31 downto 0);
       get_present_state:in std_logic_vector(3 downto 0);
       dispdata :out std_logic_vector(31 downto 0) );
 end component;
@@ -89,9 +89,9 @@ end component;
 component choose_end_point
 Port (clk2,up2,down2,confirm2:in std_logic;
       led15:out std_logic;
-      get_starting_line,get_end_line:in std_logic_vector(1 downto 0);
-      get_starting_point:in std_logic_vector(4 downto 0);
-      end_point:out std_logic_vector(4 downto 0);
+      get_starting_line,get_end_line:in std_logic_vector(31 downto 0);
+      get_starting_point:in std_logic_vector(31 downto 0);
+      end_point:out std_logic_vector(31 downto 0);
       get_present_state:in std_logic_vector(3 downto 0);
       dispdata :out std_logic_vector(31 downto 0) );
 end component;
@@ -130,7 +130,7 @@ end component;
 --模块8 选票价
 component choose_price
 Port (clk,switch4,switch5,switch6,switch7,confirm:in std_logic; --这四个开关分别对应着快速选票价：2元、3元、5元、7元
-        ticket_price:out std_logic_vector(3 downto 0);
+        ticket_price:out std_logic_vector(31 downto 0);
         flag0:out std_logic;
         dispdata :out std_logic_vector(31 downto 0);
         get_present_state:in std_logic_vector(3 downto 0)
@@ -203,14 +203,14 @@ signal seg_able_2 : std_logic_vector( 7 downto 0);
 signal sig_up0,sig_down0,sig_confirm0,sig_back0:std_logic;
 
 signal starting_line,end_line: std_logic_vector(31 downto 0);
-signal total,change:std_logic_vector(4 downto 0);  
+signal total,change:std_logic_vector(31 downto 0);  
 signal starting_point,end_point:std_logic_vector(31 downto 0);
 signal up_to_5sec,flag0:std_logic;
 signal present_state:std_logic_vector(3 downto 0);
-signal price2:std_logic_vector(3 downto 0);  --票价表里的票价
-signal ticket_amount:std_logic_vector(1 downto 0);
-signal ticket_price:std_logic_vector(3 downto 0);
-signal real_pay:std_logic_vector(4 downto 0);
+signal price2:std_logic_vector(31 downto 0);  --票价表里的票价
+signal ticket_amount:std_logic_vector(31 downto 0);
+signal ticket_price:std_logic_vector(31 downto 0);
+signal real_pay:std_logic_vector(31 downto 0);
 begin
 
 mux1:no_buffeting
