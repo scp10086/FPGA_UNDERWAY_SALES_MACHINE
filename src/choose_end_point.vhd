@@ -76,7 +76,7 @@ variable temp1:integer range 28 downto 0:=7;
 begin
 
  if (clk2'event and clk2='1') then
- if (get_present_state="0101") then
+ if (get_present_state="0100") then
   temp1:=0;sig_end_point<=temp1;
   end if;
  if (get_present_state="0101") then
