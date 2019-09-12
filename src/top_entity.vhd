@@ -93,26 +93,26 @@ case present_state is
 
   when "0101"=>  --选目的站站点状态
  
-    if (confirm0='0' and confirm='1') then present_state<="0110";end if;
+    if (confirm0='0' and confirm='1') then present_state<="1011";end if; --按确认 去显示单价
     if (back0='0' and back='1') then present_state<="0100";end if;
 
   when "0110"=>  --选票数状态
 
-    if (confirm0='0' and confirm='1') then present_state<="0111";end if;
-    if (back0='0' and back='1') then present_state<="0101";end if;
+    if (confirm0='0' and confirm='1') then present_state<="1100";end if; --按确认 去显示总价
+    if (back0='0' and back='1') then present_state<="0101";end if; --按返回 去重选终点站
     --flag<='1';
 
   when "0111"=>  --投币状态
 
     if (confirm0='0' and confirm='1') then --按下确定键
       if (get_real_pay>=get_total) then present_state<="1000";  --如果付的钱比应付的多，就跳到找零出票状态
-      else present_state<="1001"; --钱不够跳到退币状态
+      elsif(get_real_pay<get_total) then present_state<="1001"; --钱不够跳到退币状态
       end if;
     end if;
     if (back0='0' and back='1') then
-      if (flag='0') then present_state<="1001";   --按返回就到退币状态，即一次性退出钱币
+       present_state<="1001";   --按返回就到退币状态，即一次性退出钱币
       --else present_state<="0110";
-      end if;
+      --end if;
     end if; 
 
   when "1000"=>  --找零出票状态
@@ -127,7 +127,14 @@ case present_state is
   if (up0='0' and up='1') then present_state<="0011";end if; --按上 去选票价
    if (down0='0' and down='1') then present_state<="0100";end if; --按下 去选终点线
  
- 
+  when "1011"=>  --显示起始站到终点站的单价
+    if (confirm0='0' and confirm='1') then present_state<="0110";end if; --按确认 去选票数
+     if (back0='0' and back='1') then present_state<="0101";end if; --按返回 去选终点站
+     
+  when "1100"=>  --显示总价（单价*票数）
+         if (confirm0='0' and confirm='1') then present_state<="0111";end if; --按确认 去投币
+         if (back0='0' and back='1') then present_state<="0110";end if; --按返回 去重选票数
+         
   when others=>   --初始状态是s1
     present_state<="0000";
 

@@ -200,7 +200,9 @@ Port (clk:in std_logic;
        get_real_pay:in std_logic_vector(31 downto 0 );
        get_change:in std_logic_vector(31 downto 0 );
        get_refund:in std_logic_vector(31 downto 0 );
-       get_amount:in std_logic_vector(31 downto 0 )
+       get_amount:in std_logic_vector(31 downto 0 );
+       get_price:in std_logic_vector(31 downto 0 );
+       get_total:in std_logic_vector(31 downto 0 )
 );
 end component;
 
@@ -398,6 +400,8 @@ clk=>clk,
        get_real_pay=>real_pay,
        get_change=>change,
        get_refund=>real_pay,
-       get_amount=>ticket_amount
+       get_amount=>ticket_amount,
+       get_price=>price2,
+       get_total=>total
 );
 end Behavioral;

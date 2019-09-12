@@ -44,7 +44,9 @@ entity display is
        get_real_pay:in std_logic_vector(31 downto 0 );
        get_change:in std_logic_vector(31 downto 0 );
        get_refund:in std_logic_vector(31 downto 0 );
-       get_amount:in std_logic_vector(31 downto 0 )
+       get_amount:in std_logic_vector(31 downto 0 );
+       get_price:in std_logic_vector(31 downto 0 );
+       get_total:in std_logic_vector(31 downto 0 )
 );
 end display;
 
@@ -68,6 +70,8 @@ case get_present_state is
   when "1000"=> dispdata<= get_change+ "10000000000000000000000000000000";
   when "1001"=> dispdata<= get_refund+ "10010000000000000000000000000000";
   when "1010"=> dispdata<=  "10100000000000000000000000000000";
+  when "1011"=> dispdata<= get_price+ "10110000000000000000000000000000";
+  when "1100"=> dispdata<= get_total+ "11000000000000000000000000000000";
   when others=>dispdata<= x"00000000";
 end case;
 end if;
