@@ -73,6 +73,7 @@ Port (clk1,up1,down1,confirm1:in std_logic;
 get_starting_line:in std_logic_vector(31 downto 0);
 starting_point:out std_logic_vector(31 downto 0);
 get_present_state:in std_logic_vector(3 downto 0)
+);
 end component;
 
 --模块4 选终点线路
@@ -80,6 +81,7 @@ component choose_end_line
 Port (clk,up,down,confirm:in std_logic;
       end_line:out std_logic_vector(31 downto 0);
       get_present_state:in std_logic_vector(3 downto 0)
+      );
 end component;
 
 --模块5 选终点站点
@@ -90,6 +92,7 @@ Port (clk2,up2,down2,confirm2:in std_logic;
       get_starting_point:in std_logic_vector(31 downto 0);
       end_point:out std_logic_vector(31 downto 0);
       get_present_state:in std_logic_vector(3 downto 0)
+      );
 end component;
 
 --模块6 判断过了5秒无操作
