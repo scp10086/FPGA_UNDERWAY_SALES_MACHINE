@@ -90,6 +90,7 @@ begin
 
  if (clk1'event and clk1='1') then
  if (get_present_state="0010") then
+ temp1:=0;sig_starting_point<=temp1;
    if (up1='1'and up10='0') then temp1:=temp1+1;sig_starting_point<=temp1;end if;
    if (down1='1'and down10='0') then temp1:=temp1-1;sig_starting_point<=temp1;end if;
    --if (confirm1='1'and confirm10='0') then sig_starting_point<=temp1;end if;

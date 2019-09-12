@@ -64,6 +64,7 @@ begin
 
 if (clk'event and clk='1') then 
 if (get_present_state="0100") then
+temp:=0;sig_end_line<=temp;
 if (up='1'and up0='0') then temp:=temp+1;sig_end_line<=temp;end if;
 if (down='1'and down0='0') then temp:=temp-1;sig_end_line<=temp;end if;
 --if (confirm='1'and confirm0='0') then sig_end_line<=temp;end if;
