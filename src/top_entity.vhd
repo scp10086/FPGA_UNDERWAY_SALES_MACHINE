@@ -20,8 +20,8 @@ entity top_entity is
             led7:OUT std_logic; 
             led8:OUT std_logic; 
             led9:OUT std_logic; 
-            get_total:IN std_logic_vector(4 downto 0);    
-            get_real_pay:IN std_logic_vector(4 downto 0);         
+            get_total:IN std_logic_vector(31 downto 0);    
+            get_real_pay:IN std_logic_vector(31 downto 0);         
             --switch0:IN std_logic;  --四个开关，投入1元、5元、10元、20元
             --switch1:IN std_logic;
             --switch2:IN std_logic;

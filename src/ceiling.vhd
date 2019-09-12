@@ -110,8 +110,8 @@ Port(
             led1:OUT std_logic; 
             led2:OUT std_logic; 
             led3:OUT std_logic; 
-            get_total:IN std_logic_vector(4 downto 0);    
-            get_real_pay:IN std_logic_vector(4 downto 0); 
+            get_total:IN std_logic_vector(31 downto 0);    
+            get_real_pay:IN std_logic_vector(31 downto 0); 
             get_up_to_5sec:IN std_logic;
             status:out std_logic_vector(3 downto 0)     
         );   
