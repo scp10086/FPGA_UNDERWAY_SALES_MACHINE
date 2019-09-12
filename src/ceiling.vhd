@@ -97,10 +97,10 @@ Port (clk2,up2,down2,confirm2:in std_logic;
 end component;
 
 --模块6 判断过了5秒无操作
-component five_sec_passed
-Port (clk,up,down,confirm,back:in std_logic;
-        up_to_5sec:out std_logic );
-end component;
+--component five_sec_passed
+--Port (clk,up,down,confirm,back:in std_logic;
+--        up_to_5sec:out std_logic );
+--end component;
 
 --模块7 状态机
 component top_entity
@@ -275,15 +275,15 @@ port map(
   dispdata=>disp_data_2
 );  
   
-mux6:five_sec_passed
-port map(
-clk=>clk,
-up=>sig_up0,
-down=>sig_down0,
-confirm=>sig_confirm0,
-back=>sig_back0,
-up_to_5sec=>up_to_5sec
-);
+--mux6:five_sec_passed
+--port map(
+--clk=>clk,
+--up=>sig_up0,
+--down=>sig_down0,
+--confirm=>sig_confirm0,
+--back=>sig_back0,
+--up_to_5sec=>up_to_5sec
+--);
 
 mux7:top_entity
 port map(
