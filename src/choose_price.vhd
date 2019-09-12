@@ -65,7 +65,7 @@ variable temp:std_logic_vector(31 downto 0);
 begin
   if (clk'event and clk='1') then
   if(get_present_state="0000") then
-  temp:="00000000000000000000000000000010";sig_price32<=temp;
+  temp:="00000000000000000000000000000000";sig_price32<=temp;
   end if;
   
   if(get_present_state="0011") then
