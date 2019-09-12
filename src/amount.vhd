@@ -63,6 +63,7 @@ begin
 
 if (clk'event and clk='1') then 
 if (get_present_state="0110") then
+temp:=1;sig_amount<=temp;
 if (up='1'and up0='0') then temp:=temp+1;sig_amount<=temp;end if;
 if (down='1'and down0='0') then temp:=temp-1;sig_amount<=temp;end if;
 --if (confirm='1'and confirm0='0') then tem<=temp;end if;

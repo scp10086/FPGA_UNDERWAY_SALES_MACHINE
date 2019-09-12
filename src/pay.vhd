@@ -65,6 +65,7 @@ variable temp:integer:=0;
 begin
 if (clk'event and clk='1') then
 if (get_present_state="0111") then
+temp:=0;sig_pay<=temp;
   if (switch0='1'and switch00='0') then temp:=temp+1;sig_pay<=temp;end if; --拨动第一个开关上下一次算投入1元，下同
   if (switch1='1'and switch10='0') then temp:=temp+5;sig_pay<=temp;end if;
   if (switch2='1'and switch20='0') then temp:=temp+10;sig_pay<=temp;end if;

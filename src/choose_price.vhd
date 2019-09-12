@@ -61,31 +61,37 @@ end if;
 end process;
 
 process(clk,confirm,switch4,switch5,switch6,switch7,get_present_state)
+variable temp:std_logic_vector(31 downto 0);
 begin
   if (clk'event and clk='1') then
   
   if(get_present_state="0011") then
+  temp:="00000000000000000000000000000010";sig_price32<=temp;
   flag0<='1'; --如果经过了选票价这个环节 那么设标志位为1
   
-    if (switch4='1'and switch40='0') then sig_price32<="00000000000000000000000000000010";
+    if (switch4='1'and switch40='0') then temp:="00000000000000000000000000000010";
+    sig_price32<=temp;
        --if(confirm='1'and confirm0='0') then 
        --dispdata<=x"00000002";
        --end if;
     end if;
     
-    if (switch5='1'and switch50='0') then sig_price32<="00000000000000000000000000000011";
+    if (switch5='1'and switch50='0') then temp:="00000000000000000000000000000011";
+    sig_price32<=temp;
      -- if(confirm='1'and confirm0='0') then 
        --dispdata<=x"00000003";
       -- end if;
     end if;
 
-    if (switch6='1'and switch60='0') then sig_price32<="00000000000000000000000000000101";
+    if (switch6='1'and switch60='0') then temp:="00000000000000000000000000000101";
+    sig_price32<=temp;
       -- if(confirm='1'and confirm0='0') then 
        --dispdata<=x"00000005";
      --  end if;
     end if;
     
-    if (switch7='1'and switch70='0') then sig_price32<="00000000000000000000000000000111";
+    if (switch7='1'and switch70='0') then temp:="00000000000000000000000000000111";
+    sig_price32<=temp;
         --   if(confirm='1'and confirm0='0') then 
            --dispdata<=x"00000007";
         --   end if;
