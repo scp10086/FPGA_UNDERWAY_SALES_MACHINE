@@ -48,7 +48,7 @@ reg[18:0]romaddra_slave = 19'h0;
 reg[6:0]set_100 = 7'd100;
 reg[18:0]price_addr;
 assign price[3:0] = ramdouta[3:0];
-always @(negedge clk_disp)
+always @(negedge clk)
 begin
     case(startline)
         2'b00:
@@ -118,7 +118,7 @@ blk_mem_gen_0 uut_ram(
     .addra(price_addr),
     .dina(0),
     .douta(ramdouta),
-    .clkb(clk_disp),
+    .clkb(clk),
     .enb(1),
     .web(0),
     .addrb(ramaddrb),

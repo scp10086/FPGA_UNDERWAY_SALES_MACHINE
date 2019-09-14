@@ -183,7 +183,8 @@ end component;
 component amount
 Port (clk,up,down,confirm:in std_logic; 
         ticket_amount:out std_logic_vector(31 downto 0);
-        get_present_state:in std_logic_vector(3 downto 0)
+        get_present_state:in std_logic_vector(3 downto 0);
+        int_amount:out integer
         );
 end component;
 
@@ -209,7 +210,7 @@ end component;
 signal disp_data_2 : std_logic_vector(31 downto 0);
 signal seg_able_2 : std_logic_vector( 7 downto 0);
 signal sig_up0,sig_down0,sig_confirm0,sig_back0:std_logic;
-
+signal int_amount:integer;
 signal starting_line,end_line: std_logic_vector(31 downto 0);
 signal total,change:std_logic_vector(31 downto 0);  
 signal starting_point,end_point:std_logic_vector(31 downto 0);
@@ -384,7 +385,8 @@ up=>sig_up0,
 down=>sig_down0,
 confirm=>sig_confirm0,
 ticket_amount=>ticket_amount,
-get_present_state=>present_state
+get_present_state=>present_state,
+int_amount=>int_amount
 );
 
 mux15:display

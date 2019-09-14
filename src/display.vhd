@@ -53,6 +53,9 @@ end display;
 architecture Behavioral of display is
 
 begin
+
+
+
 process(clk,get_present_state)
 begin
 if (clk'event and clk='1') then
@@ -71,7 +74,8 @@ case get_present_state is
   when "1001"=> dispdata<= get_refund+ "10010000000000000000000000000000";
   when "1010"=> dispdata<=  "10100000000000000000000000000000";
   when "1011"=> dispdata<= get_price+ "10110000000000000000000000000000";
-  when "1100"=> dispdata<= get_total+ "11000000000000000000000000000000";
+  when "1100"=> 
+    dispdata<= get_total+ "11000000000000000000000000000000";
   when others=>dispdata<= x"00000000";
 end case;
 end if;

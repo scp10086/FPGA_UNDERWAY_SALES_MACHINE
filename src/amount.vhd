@@ -34,7 +34,8 @@ use IEEE.STD_LOGIC_ARITH.ALL;--使用函数conv_std_logic_vector(m,n)的前提
 entity amount is
   Port (clk,up,down,confirm:in std_logic; 
         ticket_amount:out std_logic_vector(31 downto 0);
-        get_present_state:in std_logic_vector(3 downto 0)
+        get_present_state:in std_logic_vector(3 downto 0);
+        int_amount:out integer
         --dispdata :out std_logic_vector(31 downto 0)
         );
 end amount;
@@ -50,6 +51,7 @@ process(clk)
 begin
 if (clk'event and clk='1') then
     sig_amount32<=conv_std_logic_vector(sig_amount,32);
+    int_amount<=sig_amount;
     confirm0<=confirm;
     up0<=up;
     down0<=down;
