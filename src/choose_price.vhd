@@ -66,6 +66,7 @@ begin
   if (clk'event and clk='1') then
   if(get_present_state="0000") then
   temp:="00000000000000000000000000000000";sig_price32<=temp;
+  flag0<='0';
   end if;
   
   if(get_present_state="0011") then
@@ -99,7 +100,7 @@ begin
            --dispdata<=x"00000007";
         --   end if;
         end if;
-else flag0<='0';
+--else flag0<='0';
   end if;
   
 end if;

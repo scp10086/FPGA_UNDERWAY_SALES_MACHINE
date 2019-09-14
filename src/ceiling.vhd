@@ -113,9 +113,9 @@ Port(
             led1:OUT std_logic; 
             led2:OUT std_logic; 
             led3:OUT std_logic; 
-            get_total:IN std_logic_vector(31 downto 0);    
+            get_total,get_ticket_price:IN std_logic_vector(31 downto 0);    
             get_real_pay:IN std_logic_vector(31 downto 0); 
-            get_up_to_5sec:IN std_logic;
+            get_up_to_5sec,get_flag0:IN std_logic;
             status:out std_logic_vector(3 downto 0)     
         );   
 end component;
@@ -305,8 +305,10 @@ led1=>led1,
 led2=>led2,
 led3=>led3,
 get_total=>total,
+get_ticket_price=>ticket_price,
 get_real_pay=>real_pay,
 get_up_to_5sec=>up_to_5sec,
+get_flag0=>flag0,
 status=>present_state
 );
 
