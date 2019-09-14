@@ -58,7 +58,7 @@ begin
 process(clk2)
 begin
 if (clk2'event and clk2='1') then
-end_point32<=conv_std_logic_vector(sig_end_point,32);
+    end_point32<=conv_std_logic_vector(sig_end_point,32);
     end_point<=end_point32;
     confirm0<=confirm2;
     up0<=up2;
@@ -69,7 +69,7 @@ end process;
 
 choosing:process(clk2,up2,down2,confirm2,get_present_state)
 
-variable temp1:integer range 28 downto 0:=7;
+variable temp1:integer range 28 downto 0:=0;
 --variable temp2:integer range 25 downto 0:=11;
 --variable temp3:integer range 28 downto 0:=21;
 --variable temp4:integer range 17 downto 0:=4;
