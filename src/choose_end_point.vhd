@@ -88,9 +88,9 @@ begin
  end if;
  
  
- if (get_starting_line=get_end_line and get_starting_point=sig_end_point) then warning<='1';
- sig_end_point<=sig_end_point+1;
- end if;  --如果（起始线=终点线）且（起始站=终点站）那就发出警告，默认终点站加一站
+-- if (get_starting_line=get_end_line and get_starting_point=sig_end_point) then warning<='1';
+-- sig_end_point<=sig_end_point+1;
+-- end if;  --如果（起始线=终点线）且（起始站=终点站）那就发出警告，默认终点站加一站
 
  --end_point<=conv_std_logic_vector(sig_end_point,32);
  --end_point32<=conv_std_logic_vector(sig_end_point,32);
