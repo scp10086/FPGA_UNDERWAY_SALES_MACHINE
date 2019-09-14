@@ -133,7 +133,8 @@ case present_state is
  when "1010"=>  --状态10 判断进入选票价还是选终点线
   if (up0='0' and up='1') then present_state<="0011";end if; --按上 去选票价
    if (down0='0' and down='1') then present_state<="0100";end if; --按下 去选终点线
- 
+  if (back0='0' and back='1') then present_state<="0010";end if;
+  
   when "1011"=>  --显示起始站到终点站的单价
     if (confirm0='0' and confirm='1') then present_state<="0110";end if; --按确认 去选票数
      if (back0='0' and back='1') then present_state<="0101";end if; --按返回 去选终点站
