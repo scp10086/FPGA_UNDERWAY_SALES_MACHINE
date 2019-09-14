@@ -105,11 +105,11 @@ case present_state is
   when "0111"=>  --投币状态
 
     if (confirm0='0' and confirm='1') then --按下确定键
-     if (get_flag0='0') then
+     if (get_flag0='1') then
       if (get_real_pay>=get_ticket_price) then present_state<="1000"; 
-      elsif(get_real_pay<get_total) then present_state<="1001";
+      elsif(get_real_pay<get_ticket_price) then present_state<="1001";
       end if;
-     elsif (get_flag0='1') then
+     elsif (get_flag0='0') then
       if (get_real_pay>=get_total) then present_state<="1000";  --如果付的钱比应付的多，就跳到找零出票状态
       elsif(get_real_pay<get_total) then present_state<="1001"; --钱不够跳到退币状态
       end if;
