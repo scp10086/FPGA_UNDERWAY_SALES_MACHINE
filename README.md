@@ -61,6 +61,8 @@
 
 教程16 [python操作图片像素](https://www.cnblogs.com/brillant-ordinary/p/9558089.html)
 
+教程17 [VGA](https://www.cnblogs.com/spartan/archive/2011/08/16/2140546.html)
+
 
 # 问题
 
